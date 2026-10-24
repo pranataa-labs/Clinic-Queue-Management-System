@@ -158,7 +158,7 @@ export default function DisplayPage() {
   const isCalling = currentQueue?.status === 'calling';
 
   return (
-    <div className="h-screen max-h-screen overflow-hidden bg-zinc-50/70 text-zinc-950 flex flex-col justify-between select-none relative font-sans">
+    <div className="h-screen max-h-screen overflow-hidden bg-background text-foreground flex flex-col justify-between select-none relative font-sans">
       {/* Live Intercom Banner */}
       {intercomActive?.isActive && (
         <div className="absolute top-3 left-6 right-6 z-50 bg-zinc-900 text-white rounded-xl p-4 shadow-xl border border-zinc-700 flex items-center justify-between">
@@ -185,17 +185,17 @@ export default function DisplayPage() {
       )}
 
       {/* 1. Header Bar - Crisp White with Hairline Zinc Border */}
-      <header className="px-6 py-3 bg-white border-b border-zinc-200 shadow-2xs flex items-center justify-between shrink-0">
+      <header className="px-6 py-3 bg-card border-b border-border shadow-2xs flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-green-600 flex items-center justify-center text-white shrink-0 shadow-xs">
             <Building2 className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-lg lg:text-xl font-bold tracking-tight text-zinc-950 leading-tight">
+            <h1 className="text-lg lg:text-xl font-bold tracking-tight text-foreground leading-tight">
               Poliklinik Terpadu Husada Medika
             </h1>
-            <p className="text-xs text-zinc-500 font-medium flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-zinc-400" />
+            <p className="text-xs text-muted-foreground font-medium flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-muted-foreground/80" />
               {currentTime || 'Memuat waktu...'}
             </p>
           </div>
@@ -230,9 +230,9 @@ export default function DisplayPage() {
       <main className="flex-1 min-h-0 p-4 lg:p-6 grid grid-cols-12 gap-5 lg:gap-6 items-stretch overflow-hidden">
         {/* Left Column (7/12): HERO CARD */}
         <section className="col-span-12 lg:col-span-7 flex flex-col h-full min-h-0">
-          <div className="flex-1 min-h-0 rounded-2xl bg-white border border-zinc-200 p-6 lg:p-8 flex flex-col justify-between shadow-xs relative overflow-hidden">
+          <div className="flex-1 min-h-0 rounded-2xl bg-card border border-border p-6 lg:p-8 flex flex-col justify-between shadow-xs relative overflow-hidden">
             {/* Top Row: Status Badge & 5 Room Selector Tabs */}
-            <div className="flex items-center justify-between pb-3 border-b border-zinc-100 shrink-0">
+            <div className="flex items-center justify-between pb-3 border-b border-border/60 shrink-0">
               {/* Status Badge */}
               <div>
                 {(currentPoli as any)?.counter_status === 'break' ? (
@@ -251,14 +251,14 @@ export default function DisplayPage() {
                     Panggilan Aktif Menuju Ruangan
                   </span>
                 ) : (
-                  <span className="px-3 py-1 rounded-md bg-zinc-100 text-zinc-600 border border-zinc-200 font-medium text-xs">
+                  <span className="px-3 py-1 rounded-md bg-muted text-muted-foreground border border-border font-medium text-xs">
                     Menunggu Panggilan Dokter
                   </span>
                 )}
               </div>
 
               {/* Room 1 to 5 Quick Tabs */}
-              <div className="flex items-center gap-1 bg-zinc-100 p-1 rounded-lg border border-zinc-200/80">
+              <div className="flex items-center gap-1 bg-muted p-1 rounded-lg border border-border/80">
                 {clinics.map((p, idx) => (
                   <button
                     key={p.id}
@@ -269,8 +269,8 @@ export default function DisplayPage() {
                     }}
                     className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
                       activeRoomIndex === idx
-                        ? 'bg-green-600 text-white shadow-xs'
-                        : 'text-zinc-600 hover:text-zinc-950'
+                        ? 'bg-primary text-primary-foreground shadow-2xs'
+                        : 'text-muted-foreground hover:text-foreground'
                     }`}
                   >
                     Ruangan {idx + 1}
@@ -281,42 +281,42 @@ export default function DisplayPage() {
 
             {/* Giant Number & Poliklinik Destination */}
             <div className="my-auto text-center flex flex-col items-center justify-center py-4">
-              <span className="text-xs font-bold tracking-widest text-zinc-500 uppercase mb-1">
+              <span className="text-xs font-bold tracking-widest text-muted-foreground uppercase mb-1">
                 NOMOR ANTREAN
               </span>
 
               {/* Giant Crisp Number */}
-              <div className="text-7xl sm:text-8xl md:text-9xl font-black tracking-tight text-zinc-950 font-mono leading-none my-2">
+              <div className="text-7xl sm:text-8xl md:text-9xl font-black tracking-tight text-foreground font-mono leading-none my-2">
                 {currentQueue?.nomor_antrean || '---'}
               </div>
 
               {/* Destination Poliklinik */}
               <div className="mt-3 flex flex-col items-center">
-                <span className="text-xs font-bold tracking-wider text-zinc-500 uppercase">
+                <span className="text-xs font-bold tracking-wider text-muted-foreground uppercase">
                   SILAKAN MENUJU KE
                 </span>
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-950 mt-1 tracking-tight">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mt-1 tracking-tight">
                   {currentPoli?.nama || 'Poliklinik'}
                 </div>
               </div>
             </div>
 
             {/* Fixed Bottom Bar: Ruangan di Pojok Kiri & Nama Dokter di Pojok Kanan */}
-            <div className="w-full flex items-center justify-between pt-3 pb-1 border-t border-zinc-100 shrink-0">
-              <span className="px-3 py-1 bg-zinc-100 rounded-md border border-zinc-200 text-zinc-900 font-extrabold text-sm lg:text-base">
+            <div className="w-full flex items-center justify-between pt-3 pb-1 border-t border-border/60 shrink-0">
+              <span className="px-3 py-1 bg-muted rounded-md border border-border text-foreground font-extrabold text-sm lg:text-base">
                 Ruangan {activeRoomIndex + 1}
               </span>
 
-              <div className="flex items-center gap-2 text-zinc-800 font-bold text-sm lg:text-base">
+              <div className="flex items-center gap-2 text-foreground/90 font-bold text-sm lg:text-base">
                 <Stethoscope className="w-4 h-4 text-green-600 shrink-0" />
                 <span>{currentQueue?.nama_petugas || 'Dokter Jaga'}</span>
               </div>
             </div>
 
             {/* Bottom Rotator Progress */}
-            <div className="pt-2 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500 font-semibold shrink-0">
+            <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground font-semibold shrink-0">
               <span>Rotasi antrean otomatis untuk seluruh poliklinik</span>
-              <span className="font-mono text-zinc-800 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200 font-bold">
+              <span className="font-mono text-foreground/90 bg-muted px-2 py-0.5 rounded border border-border font-bold">
                 Ruangan {activeRoomIndex + 1} dari {clinics.length || 5}
               </span>
             </div>
@@ -325,12 +325,12 @@ export default function DisplayPage() {
 
         {/* Right Column (5/12): 5 RUANGAN POLIKLINIK LIST */}
         <section className="col-span-12 lg:col-span-5 flex flex-col h-full min-h-0">
-          <div className="flex items-center justify-between pb-2 border-b border-zinc-200 shrink-0 mb-2.5">
-            <h2 className="text-base font-bold text-zinc-900 flex items-center gap-2">
+          <div className="flex items-center justify-between pb-2 border-b border-border shrink-0 mb-2.5">
+            <h2 className="text-base font-bold text-foreground flex items-center gap-2">
               <Activity className="w-4 h-4 text-green-600" />
               <span>Daftar Antrean Ruangan</span>
             </h2>
-            <span className="text-xs font-medium text-zinc-600 bg-zinc-100 px-2.5 py-0.5 rounded-md border border-zinc-200">
+            <span className="text-xs font-medium text-muted-foreground bg-muted px-2.5 py-0.5 rounded-md border border-border">
               {clinics.length} Ruangan Aktif
             </span>
           </div>
@@ -352,8 +352,8 @@ export default function DisplayPage() {
                   }}
                   className={`px-4 py-2.5 rounded-xl border transition-all flex items-center justify-between shadow-2xs flex-1 min-h-0 overflow-hidden cursor-pointer ${
                     isSelected
-                      ? 'bg-white border-2 border-green-600 shadow-xs'
-                      : 'bg-white border-zinc-200 hover:border-zinc-300'
+                      ? 'bg-card border-2 border-primary shadow-xs'
+                      : 'bg-card border-border hover:border-zinc-300'
                   }`}
                 >
                   {/* Left Side */}
@@ -371,12 +371,12 @@ export default function DisplayPage() {
                             <CheckCircle2 className="w-3 h-3 text-green-600" />
                             Sedang Diperiksa
                           </span>
-                          <span className="font-mono font-bold text-zinc-900 text-base leading-none">
+                          <span className="font-mono font-bold text-foreground text-base leading-none">
                             {current.nomor_antrean}
                           </span>
                         </>
                       ) : (
-                        <span className="px-2 py-0.5 rounded bg-zinc-100 text-zinc-500 font-medium text-[10px] uppercase tracking-wider border border-zinc-200">
+                        <span className="px-2 py-0.5 rounded bg-muted text-muted-foreground font-medium text-[10px] uppercase tracking-wider border border-border">
                           Ruangan Kosong
                         </span>
                       )}
@@ -384,23 +384,23 @@ export default function DisplayPage() {
 
                     {/* Bottom Row: Ruangan & Nama Poli */}
                     <div className="flex items-center gap-2 min-w-0 mt-1">
-                      <span className="text-[11px] font-mono px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-900 font-bold border border-zinc-200 shrink-0">
+                      <span className="text-[11px] font-mono px-1.5 py-0.5 rounded bg-muted text-foreground font-bold border border-border shrink-0">
                         Ruangan {idx + 1}
                       </span>
-                      <h3 className="font-extrabold text-zinc-950 text-sm truncate">
+                      <h3 className="font-extrabold text-foreground text-sm truncate">
                         {poli.nama}
                       </h3>
                     </div>
                   </div>
 
                   {/* Right Side: Antrean Berikutnya */}
-                  <div className="text-right pl-3 border-l border-zinc-100 min-w-[130px] shrink-0 flex flex-col items-end justify-between h-full">
+                  <div className="text-right pl-3 border-l border-border/60 min-w-[130px] shrink-0 flex flex-col items-end justify-between h-full">
                     <span className="px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1">
                       <Clock className="w-3 h-3 text-amber-700" />
                       Berikutnya
                     </span>
 
-                    <div className="text-2xl font-black text-zinc-950 font-mono tracking-tight leading-none mt-1">
+                    <div className="text-2xl font-black text-foreground font-mono tracking-tight leading-none mt-1">
                       {nextQ?.nomor_antrean || '---'}
                     </div>
                   </div>

@@ -323,12 +323,12 @@ function ConsoleContent() {
   // LOADING STATE
   if (isInitializing) {
     return (
-      <div className="min-h-screen bg-zinc-50 flex items-center justify-center p-6 text-center">
+      <div className="min-h-screen bg-background flex items-center justify-center p-6 text-center">
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white shadow-xs animate-pulse">
             <Stethoscope className="w-5 h-5" />
           </div>
-          <span className="font-semibold text-zinc-700 text-sm">Menyiapkan Konsol Dokter...</span>
+          <span className="font-semibold text-foreground/90 text-sm">Menyiapkan Konsol Dokter...</span>
         </div>
       </div>
     );
@@ -337,21 +337,21 @@ function ConsoleContent() {
   // SCREEN 1: DOCTOR LOGIN / ROOM ASSIGNMENT GATE
   if (!activeDoctor) {
     return (
-      <div className="min-h-screen bg-zinc-50 text-zinc-900 flex flex-col font-sans select-none">
+      <div className="min-h-screen bg-background text-foreground flex flex-col font-sans select-none">
         {/* Top Simple Bar */}
-        <header className="px-6 lg:px-8 py-3.5 bg-white border-b border-zinc-200 flex items-center justify-between shadow-2xs">
+        <header className="px-6 lg:px-8 py-3.5 bg-card border-b border-border flex items-center justify-between shadow-2xs">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-zinc-900 flex items-center justify-center text-white shrink-0">
               <Stethoscope className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-base font-bold text-zinc-900 leading-tight">Konsol Dokter Husada Medika</h1>
-              <p className="text-xs text-zinc-500 font-medium">Pemilihan Ruangan & Autentikasi Tugas</p>
+              <h1 className="text-base font-bold text-foreground leading-tight">Konsol Dokter Husada Medika</h1>
+              <p className="text-xs text-muted-foreground font-medium">Pemilihan Ruangan & Autentikasi Tugas</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs px-2.5 py-1 rounded-md bg-zinc-100 border border-zinc-200 text-zinc-600 font-medium flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-zinc-500" />
+            <span className="text-xs px-2.5 py-1 rounded-md bg-muted border border-border text-muted-foreground font-medium flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-muted-foreground" />
               Sesi Tenaga Medis
             </span>
           </div>
@@ -360,14 +360,14 @@ function ConsoleContent() {
         {/* Doctor Selection Grid */}
         <main className="flex-1 max-w-5xl mx-auto w-full p-6 lg:p-10 flex flex-col justify-center">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-zinc-700 border border-zinc-200 text-xs font-semibold mb-3">
-              <ShieldCheck className="w-3.5 h-3.5 text-zinc-600" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-muted text-foreground/90 border border-border text-xs font-semibold mb-3">
+              <ShieldCheck className="w-3.5 h-3.5 text-muted-foreground" />
               Akses Terisolasi Per Ruangan
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-zinc-900 tracking-tight">
+            <h2 className="text-2xl lg:text-3xl font-bold text-foreground tracking-tight">
               Pilih Profil Dokter & Ruangan Anda
             </h2>
-            <p className="text-sm text-zinc-500 mt-1 max-w-md mx-auto font-medium">
+            <p className="text-sm text-muted-foreground mt-1 max-w-md mx-auto font-medium">
               Setiap dokter hanya dapat mengakses, melihat antrean, dan memanggil pasien di ruangannya sendiri.
             </p>
           </div>
@@ -383,37 +383,37 @@ function ConsoleContent() {
                 <div
                   key={c.id}
                   onClick={() => handleSelectDoctor(c)}
-                  className="bg-white rounded-xl border border-zinc-200 hover:border-zinc-400 p-5 shadow-xs hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between group"
+                  className="bg-card rounded-xl border border-border hover:border-zinc-400 p-5 shadow-xs hover:shadow-sm transition-all cursor-pointer flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="flex items-center justify-between pb-3 border-b border-zinc-100">
-                      <span className="text-xs font-bold text-zinc-900 bg-zinc-100 border border-zinc-200 px-2.5 py-0.5 rounded-md">
+                    <div className="flex items-center justify-between pb-3 border-b border-border/60">
+                      <span className="text-xs font-bold text-foreground bg-muted border border-border px-2.5 py-0.5 rounded-md">
                         {roomName}
                       </span>
-                      <span className="text-[11px] font-mono font-medium text-zinc-500">
+                      <span className="text-[11px] font-mono font-medium text-muted-foreground">
                         {poliCode}
                       </span>
                     </div>
 
                     <div className="pt-3.5 flex flex-col gap-0.5">
-                      <h3 className="text-base font-bold text-zinc-900 group-hover:text-zinc-700 transition-colors">
+                      <h3 className="text-base font-bold text-foreground group-hover:text-foreground/90 transition-colors">
                         {c.nama_petugas}
                       </h3>
-                      <p className="text-xs font-medium text-zinc-500">
+                      <p className="text-xs font-medium text-muted-foreground">
                         {c.gelar_petugas || 'Dokter Spesialis'}
                       </p>
-                      <p className="text-xs font-semibold text-zinc-700 mt-1">
+                      <p className="text-xs font-semibold text-foreground/90 mt-1">
                         {poliName}
                       </p>
-                      <div className="flex items-center gap-1.5 text-[11px] text-zinc-400 mt-2">
+                      <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground/80 mt-2">
                         <MapPin className="w-3.5 h-3.5" />
                         <span>{floor}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="pt-4 mt-4 border-t border-zinc-100">
-                    <div className="w-full py-2 px-3 rounded-lg bg-green-600 group-hover:bg-green-700 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs">
+                  <div className="pt-4 mt-4 border-t border-border/60">
+                    <div className="w-full py-2 px-3 rounded-lg bg-primary group-hover:bg-primary/90 text-primary-foreground shadow-2xs font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs">
                       <span>Masuk ke {roomName}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </div>
@@ -432,9 +432,9 @@ function ConsoleContent() {
   const poliDisplayName = activeDoctor.poliklinik?.nama || 'Poliklinik';
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 flex font-sans select-none">
+    <div className="min-h-screen bg-background text-foreground flex font-sans select-none">
       {/* SISI KIRI: Dedicated Doctor Sidebar */}
-      <aside className="w-64 lg:w-72 bg-white border-r border-zinc-200 flex flex-col justify-between shrink-0 h-screen sticky top-0 p-4 shadow-2xs z-20">
+      <aside className="w-64 lg:w-72 bg-card border-r border-border flex flex-col justify-between shrink-0 h-screen sticky top-0 p-4 shadow-2xs z-20">
         <div className="flex flex-col gap-4 overflow-y-auto">
           {/* Logo & Brand Header */}
           <div className="flex items-center gap-3 px-2 py-1">
@@ -442,62 +442,62 @@ function ConsoleContent() {
               <Stethoscope className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-sm font-bold text-zinc-900 tracking-tight leading-tight">
+              <h1 className="text-sm font-bold text-foreground tracking-tight leading-tight">
                 Konsol Dokter
               </h1>
-              <p className="text-[11px] font-medium text-zinc-500">
+              <p className="text-[11px] font-medium text-muted-foreground">
                 Husada Medika
               </p>
             </div>
           </div>
 
           {/* Dedicated Doctor Profile Card (Locked Room) */}
-          <div className="border border-zinc-200 rounded-xl p-3.5 bg-zinc-50/70 flex flex-col gap-2">
+          <div className="border border-border rounded-xl p-3.5 bg-background/70 flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <span className="text-[10px] px-2 py-0.5 rounded-md font-semibold bg-green-50 text-green-700 border border-green-200 flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
                 Sedang Bertugas
               </span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-medium bg-white text-zinc-600 border border-zinc-200">
+              <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-medium bg-card text-muted-foreground border border-border">
                 {activeDoctor.poliklinik?.kode}
               </span>
             </div>
 
             <div>
-              <h2 className="text-sm font-bold text-zinc-900 leading-tight">
+              <h2 className="text-sm font-bold text-foreground leading-tight">
                 {activeDoctor.nama_petugas}
               </h2>
-              <p className="text-[11px] font-medium text-zinc-500">
+              <p className="text-[11px] font-medium text-muted-foreground">
                 {activeDoctor.gelar_petugas}
               </p>
             </div>
 
-            <div className="pt-2 border-t border-zinc-200/60 flex flex-col gap-1 text-[11px]">
+            <div className="pt-2 border-t border-border/60 flex flex-col gap-1 text-[11px]">
               <div className="flex items-center justify-between font-semibold">
-                <span className="text-zinc-500">Ruangan:</span>
-                <span className="text-zinc-900 font-bold">{roomDisplayName}</span>
+                <span className="text-muted-foreground">Ruangan:</span>
+                <span className="text-foreground font-bold">{roomDisplayName}</span>
               </div>
               <div className="flex items-center justify-between font-medium">
-                <span className="text-zinc-500">Poli:</span>
-                <span className="text-zinc-700 truncate max-w-[130px]">{poliDisplayName}</span>
+                <span className="text-muted-foreground">Poli:</span>
+                <span className="text-foreground/90 truncate max-w-[130px]">{poliDisplayName}</span>
               </div>
             </div>
 
             {/* Lock isolation badge */}
-            <div className="mt-1 p-2 rounded-lg bg-white border border-zinc-200 flex items-center gap-2 text-[10px] font-medium text-zinc-600">
-              <Lock className="w-3.5 h-3.5 shrink-0 text-zinc-400" />
+            <div className="mt-1 p-2 rounded-lg bg-card border border-border flex items-center gap-2 text-[10px] font-medium text-muted-foreground">
+              <Lock className="w-3.5 h-3.5 shrink-0 text-muted-foreground/80" />
               <span>Akses Khusus {roomDisplayName}</span>
             </div>
           </div>
 
           {/* Shift Queue Statistics */}
           <div className="grid grid-cols-2 gap-2">
-            <div className="p-2.5 rounded-lg bg-white border border-zinc-200 text-center">
-              <span className="text-[10px] font-medium text-zinc-500 uppercase block">Menunggu</span>
-              <span className="text-lg font-bold text-zinc-900 font-mono">{waitingList.length}</span>
+            <div className="p-2.5 rounded-lg bg-card border border-border text-center">
+              <span className="text-[10px] font-medium text-muted-foreground uppercase block">Menunggu</span>
+              <span className="text-lg font-bold text-foreground font-mono">{waitingList.length}</span>
             </div>
-            <div className="p-2.5 rounded-lg bg-white border border-zinc-200 text-center">
-              <span className="text-[10px] font-medium text-zinc-500 uppercase block">Selesai</span>
+            <div className="p-2.5 rounded-lg bg-card border border-border text-center">
+              <span className="text-[10px] font-medium text-muted-foreground uppercase block">Selesai</span>
               <span className="text-lg font-bold text-green-700 font-mono">{recentCompleted.length}</span>
             </div>
           </div>
@@ -505,7 +505,7 @@ function ConsoleContent() {
           {/* Exit / Switch Doctor Button */}
           <button
             onClick={handleLogoutDoctor}
-            className="w-full py-2 px-3 rounded-lg border border-zinc-200 hover:border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-600 text-xs font-medium transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            className="w-full py-2 px-3 rounded-lg border border-border hover:border-zinc-300 bg-card hover:bg-background text-muted-foreground text-xs font-medium transition-all flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <LogOut className="w-3.5 h-3.5" />
             Keluar / Ganti Dokter
@@ -513,27 +513,27 @@ function ConsoleContent() {
         </div>
 
         {/* Dedicated System Footer */}
-        <div className="border-t border-zinc-200 pt-3 flex flex-col gap-1 text-[11px] text-zinc-400">
+        <div className="border-t border-border pt-3 flex flex-col gap-1 text-[11px] text-muted-foreground/80">
           <div className="flex items-center justify-between font-medium">
             <span>Sistem Konsol Dokter</span>
-            <span className="font-mono text-zinc-500">v1.0</span>
+            <span className="font-mono text-muted-foreground">v1.0</span>
           </div>
-          <p className="text-[10px] text-zinc-400">Husada Medika Center</p>
+          <p className="text-[10px] text-muted-foreground/80">Husada Medika Center</p>
         </div>
       </aside>
 
       {/* SISI KANAN: Dedicated Console Workspace */}
       <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
         {/* Sleek Top Header */}
-        <header className="px-6 lg:px-8 py-3.5 bg-white border-b border-zinc-200 flex items-center justify-between sticky top-0 z-10 shadow-2xs">
+        <header className="px-6 lg:px-8 py-3.5 bg-card border-b border-border flex items-center justify-between sticky top-0 z-10 shadow-2xs">
           <div>
-            <h2 className="text-base lg:text-lg font-bold text-zinc-900 flex items-center gap-2">
+            <h2 className="text-base lg:text-lg font-bold text-foreground flex items-center gap-2">
               <span>{roomDisplayName}</span>
               <span className="text-zinc-300">&bull;</span>
-              <span className="text-zinc-600 font-semibold">{poliDisplayName}</span>
+              <span className="text-muted-foreground font-semibold">{poliDisplayName}</span>
             </h2>
-            <p className="text-xs text-zinc-500 font-medium">
-              Dokter Jaga: <strong className="text-zinc-900 font-semibold">{activeDoctor.nama_petugas}</strong> ({activeDoctor.gelar_petugas})
+            <p className="text-xs text-muted-foreground font-medium">
+              Dokter Jaga: <strong className="text-foreground font-semibold">{activeDoctor.nama_petugas}</strong> ({activeDoctor.gelar_petugas})
             </p>
           </div>
 
@@ -545,7 +545,7 @@ function ConsoleContent() {
               className={`px-3 py-1.5 rounded-lg font-semibold text-xs flex items-center gap-1.5 transition-all cursor-pointer border ${
                 isOnBreak
                   ? 'bg-amber-600 hover:bg-amber-700 text-white border-amber-600 shadow-xs'
-                  : 'bg-white hover:bg-amber-50 text-amber-900 border-amber-300'
+                  : 'bg-card hover:bg-amber-50 text-amber-900 border-amber-300'
               }`}
             >
               <Coffee className="w-3.5 h-3.5" />
@@ -558,7 +558,7 @@ function ConsoleContent() {
               className={`px-3 py-1.5 rounded-lg font-medium text-xs flex items-center gap-1.5 transition-all cursor-pointer border ${
                 isBroadcasting
                   ? 'bg-rose-600 hover:bg-rose-700 text-white border-rose-600 animate-pulse'
-                  : 'bg-white hover:bg-zinc-50 text-zinc-700 border-zinc-200'
+                  : 'bg-card hover:bg-background text-foreground/90 border-border'
               }`}
             >
               {isBroadcasting ? (
@@ -568,7 +568,7 @@ function ConsoleContent() {
                 </>
               ) : (
                 <>
-                  <Mic className="w-3.5 h-3.5 text-zinc-500" />
+                  <Mic className="w-3.5 h-3.5 text-muted-foreground" />
                   <span>Bicara di Speaker TV (Mic)</span>
                 </>
               )}
@@ -577,7 +577,7 @@ function ConsoleContent() {
             {/* Refresh Button */}
             <button
               onClick={loadQueues}
-              className="p-1.5 rounded-lg bg-white hover:bg-zinc-100 text-zinc-600 border border-zinc-200 cursor-pointer transition-colors"
+              className="p-1.5 rounded-lg bg-card hover:bg-muted text-muted-foreground border border-border cursor-pointer transition-colors"
               title="Refresh Antrean"
             >
               <RefreshCw className="w-3.5 h-3.5" />
@@ -653,9 +653,9 @@ function ConsoleContent() {
             {/* Left Column (5/12): Current Patient & Controls */}
             <div className="col-span-12 lg:col-span-5 flex flex-col gap-5">
               {/* Active Patient Card */}
-              <div className="rounded-xl bg-white border border-zinc-200 p-6 flex flex-col justify-between shadow-2xs">
-                <div className="flex items-center justify-between pb-3 border-b border-zinc-100">
-                  <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider flex items-center gap-1.5">
+              <div className="rounded-xl bg-card border border-border p-6 flex flex-col justify-between shadow-2xs">
+                <div className="flex items-center justify-between pb-3 border-b border-border/60">
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-zinc-400" />
                     Pasien di Ruangan
                   </span>
@@ -665,7 +665,7 @@ function ConsoleContent() {
                         ? 'bg-green-50 text-green-700 border-green-200'
                         : currentQueue?.status === 'calling'
                         ? 'bg-amber-50 text-amber-800 border-amber-200'
-                        : 'bg-zinc-100 text-zinc-600 border-zinc-200'
+                        : 'bg-muted text-muted-foreground border-border'
                     }`}
                   >
                     {currentQueue?.status === 'in_consultation'
@@ -678,18 +678,18 @@ function ConsoleContent() {
 
                 {/* Patient Info */}
                 <div className="py-6 text-center">
-                  <div className="text-6xl lg:text-7xl font-black text-zinc-950 tracking-tight font-mono">
+                  <div className="text-6xl lg:text-7xl font-black text-foreground tracking-tight font-mono">
                     {currentQueue?.nomor_antrean || '---'}
                   </div>
-                  <div className="text-xl font-extrabold text-zinc-950 mt-2">
+                  <div className="text-xl font-extrabold text-foreground mt-2">
                     {currentQueue?.nama_pasien || 'Belum Ada Pasien'}
                   </div>
                   {currentQueue && (
                     <div className="mt-2.5 flex items-center justify-center gap-2">
-                      <span className="text-xs px-2 py-0.5 rounded bg-zinc-100 border border-zinc-200 text-zinc-700 font-semibold uppercase">
+                      <span className="text-xs px-2 py-0.5 rounded bg-muted border border-border text-foreground/90 font-semibold uppercase">
                         Kategori: {currentQueue.jenis_pasien}
                       </span>
-                      <span className="text-xs px-2 py-0.5 rounded bg-zinc-50 border border-zinc-200 text-zinc-600 font-medium">
+                      <span className="text-xs px-2 py-0.5 rounded bg-background border border-border text-muted-foreground font-medium">
                         Panggilan Ke-{currentQueue.call_count}
                       </span>
                     </div>
@@ -724,14 +724,14 @@ function ConsoleContent() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="grid grid-cols-2 gap-2 pt-3 border-t border-zinc-100">
+                <div className="grid grid-cols-2 gap-2 pt-3 border-t border-border/60">
                   <button
                     onClick={handleCallNext}
                     disabled={loadingAction || waitingList.length === 0 || isOnBreak}
                     className={`col-span-2 py-2.5 px-4 rounded-lg font-semibold text-xs flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer ${
                       isOnBreak
-                        ? 'bg-zinc-200 text-zinc-500 cursor-not-allowed border border-zinc-300'
-                        : 'bg-green-600 hover:bg-green-700 disabled:opacity-40 text-white'
+                        ? 'bg-zinc-200 text-muted-foreground cursor-not-allowed border border-zinc-300'
+                        : 'bg-primary hover:bg-primary/90 disabled:opacity-40 text-primary-foreground shadow-2xs'
                     }`}
                   >
                     <Play className="w-3.5 h-3.5 fill-current" />
@@ -747,9 +747,9 @@ function ConsoleContent() {
                   <button
                     onClick={handleRecall}
                     disabled={loadingAction || !currentQueue}
-                    className="py-2 px-3 rounded-lg bg-white hover:bg-zinc-50 disabled:opacity-40 text-zinc-800 font-medium text-xs flex items-center justify-center gap-1.5 border border-zinc-200 transition-all cursor-pointer"
+                    className="py-2 px-3 rounded-lg bg-card hover:bg-background disabled:opacity-40 text-foreground font-medium text-xs flex items-center justify-center gap-1.5 border border-border transition-all cursor-pointer"
                   >
-                    <RotateCcw className="w-3.5 h-3.5 text-zinc-500" />
+                    <RotateCcw className="w-3.5 h-3.5 text-muted-foreground" />
                     <span>Panggil Ulang (Recall)</span>
                   </button>
 
@@ -759,7 +759,7 @@ function ConsoleContent() {
                     className={`py-2 px-3 rounded-lg font-medium text-xs flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
                       currentQueue?.status === 'in_consultation'
                         ? 'bg-green-50 text-green-800 border-green-300'
-                        : 'bg-white hover:bg-zinc-50 text-zinc-800 border-zinc-200'
+                        : 'bg-card hover:bg-background text-foreground border-border'
                     }`}
                   >
                     <UserCheck className="w-3.5 h-3.5" />
@@ -769,7 +769,7 @@ function ConsoleContent() {
                   <button
                     onClick={handleSkip}
                     disabled={loadingAction || !currentQueue}
-                    className="py-2 px-3 rounded-lg bg-white hover:bg-rose-50 disabled:opacity-40 text-rose-700 font-medium text-xs flex items-center justify-center gap-1.5 border border-zinc-200 hover:border-rose-200 transition-all cursor-pointer"
+                    className="py-2 px-3 rounded-lg bg-card hover:bg-rose-50 disabled:opacity-40 text-rose-700 font-medium text-xs flex items-center justify-center gap-1.5 border border-border hover:border-rose-200 transition-all cursor-pointer"
                   >
                     <SkipForward className="w-3.5 h-3.5 text-rose-500" />
                     <span>Lewati (Skip)</span>
@@ -778,9 +778,9 @@ function ConsoleContent() {
                   <button
                     onClick={handleComplete}
                     disabled={loadingAction || !currentQueue}
-                    className="py-2 px-3 rounded-lg bg-white hover:bg-zinc-50 disabled:opacity-40 text-zinc-800 font-medium text-xs flex items-center justify-center gap-1.5 border border-zinc-200 transition-all cursor-pointer"
+                    className="py-2 px-3 rounded-lg bg-card hover:bg-background disabled:opacity-40 text-foreground font-medium text-xs flex items-center justify-center gap-1.5 border border-border transition-all cursor-pointer"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-zinc-600" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-muted-foreground" />
                     <span>Selesai Konsultasi</span>
                   </button>
                 </div>
@@ -788,12 +788,12 @@ function ConsoleContent() {
 
               {/* Announcement Preview */}
               {lastAnnouncement && (
-                <div className="p-3.5 rounded-xl bg-white border border-zinc-200 text-xs shadow-2xs">
-                  <div className="flex items-center gap-1.5 text-zinc-700 font-semibold mb-1">
-                    <Sparkles className="w-3.5 h-3.5 text-zinc-400" />
+                <div className="p-3.5 rounded-xl bg-card border border-border text-xs shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-foreground/90 font-semibold mb-1">
+                    <Sparkles className="w-3.5 h-3.5 text-muted-foreground/80" />
                     Skrip Panggilan Suara Terakhir:
                   </div>
-                  <p className="text-zinc-600 italic leading-relaxed">
+                  <p className="text-muted-foreground italic leading-relaxed">
                     &ldquo;{lastAnnouncement}&rdquo;
                   </p>
                 </div>
@@ -803,14 +803,14 @@ function ConsoleContent() {
             {/* Right Column (7/12): Queue Table & Log */}
             <div className="col-span-12 lg:col-span-7 flex flex-col gap-5">
               {/* Waiting Table Card */}
-              <div className="rounded-xl bg-white border border-zinc-200 p-6 flex flex-col shadow-2xs">
-                <div className="flex items-center justify-between pb-3 border-b border-zinc-100">
+              <div className="rounded-xl bg-card border border-border p-6 flex flex-col shadow-2xs">
+                <div className="flex items-center justify-between pb-3 border-b border-border/60">
                   <div>
-                    <h3 className="text-base font-bold text-zinc-900 flex items-center gap-2">
-                      <Users className="w-4 h-4 text-zinc-500" />
+                    <h3 className="text-base font-bold text-foreground flex items-center gap-2">
+                      <Users className="w-4 h-4 text-muted-foreground" />
                       Daftar Antrean Menunggu ({waitingList.length})
                     </h3>
-                    <p className="text-xs text-zinc-500 font-medium">
+                    <p className="text-xs text-muted-foreground font-medium">
                       Antrean khusus {poliDisplayName}
                     </p>
                   </div>
@@ -820,7 +820,7 @@ function ConsoleContent() {
                 <div className="overflow-x-auto mt-2">
                   <table className="w-full text-left text-sm">
                     <thead>
-                      <tr className="border-b border-zinc-100 text-zinc-400 uppercase font-medium text-[11px]">
+                      <tr className="border-b border-border/60 text-muted-foreground/80 uppercase font-medium text-[11px]">
                         <th className="py-2.5 px-3">No. Antrean</th>
                         <th className="py-2.5 px-3">Nama Pasien</th>
                         <th className="py-2.5 px-3">Kategori</th>
@@ -831,17 +831,17 @@ function ConsoleContent() {
                     <tbody className="divide-y divide-zinc-100">
                       {waitingList.length === 0 ? (
                         <tr>
-                          <td colSpan={5} className="py-6 text-center text-zinc-400 font-medium italic text-xs">
+                          <td colSpan={5} className="py-6 text-center text-muted-foreground/80 font-medium italic text-xs">
                             Tidak ada pasien yang sedang menunggu antrean di poli ini.
                           </td>
                         </tr>
                       ) : (
                         waitingList.map((q) => (
-                          <tr key={q.id} className="hover:bg-zinc-50 transition-colors">
-                            <td className="py-3 px-3 font-mono font-bold text-zinc-900 text-sm">
+                          <tr key={q.id} className="hover:bg-background transition-colors">
+                            <td className="py-3 px-3 font-mono font-bold text-foreground text-sm">
                               {q.nomor_antrean}
                             </td>
-                            <td className="py-3 px-3 font-semibold text-zinc-800 text-xs lg:text-sm">
+                            <td className="py-3 px-3 font-semibold text-foreground text-xs lg:text-sm">
                               {q.nama_pasien}
                             </td>
                             <td className="py-3 px-3">
@@ -850,14 +850,14 @@ function ConsoleContent() {
                                   q.jenis_pasien === 'prioritas'
                                     ? 'bg-amber-50 text-amber-800 border-amber-200'
                                     : q.jenis_pasien === 'bpjs'
-                                    ? 'bg-zinc-100 text-zinc-700 border-zinc-200'
-                                    : 'bg-white text-zinc-700 border-zinc-200'
+                                    ? 'bg-muted text-foreground/90 border-border'
+                                    : 'bg-card text-foreground/90 border-border'
                                 }`}
                               >
                                 {q.jenis_pasien}
                               </span>
                             </td>
-                            <td className="py-3 px-3 text-zinc-500 font-medium text-xs max-w-[150px] truncate">
+                            <td className="py-3 px-3 text-muted-foreground font-medium text-xs max-w-[150px] truncate">
                               {q.catatan_khusus || '-'}
                             </td>
                             <td className="py-3 px-3 text-right">
@@ -884,18 +884,18 @@ function ConsoleContent() {
                 </div>
 
                 {/* Completed Patients Bar */}
-                <div className="pt-3 border-t border-zinc-100 mt-4">
-                  <span className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wide block mb-1.5">
+                <div className="pt-3 border-t border-border/60 mt-4">
+                  <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide block mb-1.5">
                     Pasien Selesai Hari Ini:
                   </span>
                   <div className="flex flex-wrap gap-1.5 text-xs">
                     {recentCompleted.length === 0 ? (
-                      <span className="text-zinc-400 text-xs italic">Belum ada pasien selesai.</span>
+                      <span className="text-muted-foreground/80 text-xs italic">Belum ada pasien selesai.</span>
                     ) : (
                       recentCompleted.map((cq) => (
                         <span
                           key={cq.id}
-                          className="px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-700 border border-zinc-200 font-mono font-medium text-[11px]"
+                          className="px-2 py-0.5 rounded-md bg-muted text-foreground/90 border border-border font-mono font-medium text-[11px]"
                         >
                           ✓ {cq.nomor_antrean} ({cq.nama_pasien})
                         </span>
@@ -906,40 +906,40 @@ function ConsoleContent() {
               </div>
 
               {/* Operational Log */}
-              <div className="rounded-xl bg-white border border-zinc-200 p-6 shadow-2xs">
-                <div className="flex items-center justify-between pb-2.5 border-b border-zinc-100 mb-3">
-                  <h3 className="text-sm font-bold text-zinc-900 flex items-center gap-2">
-                    <History className="w-4 h-4 text-zinc-500" />
+              <div className="rounded-xl bg-card border border-border p-6 shadow-2xs">
+                <div className="flex items-center justify-between pb-2.5 border-b border-border/60 mb-3">
+                  <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+                    <History className="w-4 h-4 text-muted-foreground" />
                     Riwayat Panggilan Terakhir (Log Suara Klinik)
                   </h3>
-                  <span className="text-[11px] font-medium text-zinc-500 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200">
+                  <span className="text-[11px] font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded border border-border">
                     Log Operasional
                   </span>
                 </div>
 
                 <div className="divide-y divide-zinc-100">
                   {recentCalls.length === 0 ? (
-                    <div className="py-4 text-center text-zinc-400 font-medium italic text-xs">
+                    <div className="py-4 text-center text-muted-foreground/80 font-medium italic text-xs">
                       Belum ada log panggilan audio tercatat hari ini.
                     </div>
                   ) : (
                     recentCalls.map((rc) => (
                       <div key={rc.id} className="py-2 flex items-center justify-between">
                         <div className="flex items-center gap-2.5">
-                          <span className="text-xs font-bold font-mono px-2 py-0.5 bg-zinc-100 border border-zinc-200 text-zinc-800 rounded">
+                          <span className="text-xs font-bold font-mono px-2 py-0.5 bg-muted border border-border text-foreground rounded">
                             {rc.nomor_antrean}
                           </span>
                           <div>
-                            <div className="font-semibold text-zinc-800 text-xs">
+                            <div className="font-semibold text-foreground text-xs">
                               {rc.poliklinik}
                             </div>
-                            <div className="text-[10px] text-zinc-400">
+                            <div className="text-[10px] text-muted-foreground/80">
                               {rc.bilik?.replace('Bilik', 'Ruangan')}
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-1 text-[11px] font-mono text-zinc-500 bg-zinc-50 px-2 py-0.5 rounded border border-zinc-200">
-                          <Clock className="w-3 h-3 text-zinc-400" />
+                        <div className="flex items-center gap-1 text-[11px] font-mono text-muted-foreground bg-background px-2 py-0.5 rounded border border-border">
+                          <Clock className="w-3 h-3 text-muted-foreground/80" />
                           {rc.waktu}
                         </div>
                       </div>

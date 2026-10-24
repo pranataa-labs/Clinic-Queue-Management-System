@@ -64,18 +64,18 @@ export default function KioskPage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 flex flex-col font-sans select-none">
+    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans select-none">
       {/* Top Header */}
-      <header className="px-6 lg:px-8 py-3.5 bg-white border-b border-zinc-200 shadow-2xs flex items-center justify-between">
+      <header className="px-6 lg:px-8 py-3.5 bg-card border-b border-border shadow-2xs flex items-center justify-between">
         <div className="flex items-center gap-3.5">
           <div className="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white shrink-0">
             <Ticket className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-lg lg:text-xl font-bold text-zinc-900 leading-tight">
+            <h1 className="text-lg lg:text-xl font-bold text-foreground leading-tight">
               Anjungan Pendaftaran Mandiri (Kiosk)
             </h1>
-            <p className="text-xs text-zinc-500 font-medium">
+            <p className="text-xs text-muted-foreground font-medium">
               Ambil tiket antrean poliklinik secara mandiri dan praktis
             </p>
           </div>
@@ -92,12 +92,12 @@ export default function KioskPage() {
       {/* Main Container */}
       <main className="flex-1 p-6 lg:p-8 max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-6 items-start my-auto">
         {/* Left Form (7/12) */}
-        <div className="md:col-span-7 bg-white border border-zinc-200 rounded-xl p-6 lg:p-7 shadow-2xs">
-          <h2 className="text-base font-bold text-zinc-900 mb-0.5 flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-zinc-600" />
+        <div className="md:col-span-7 bg-card border border-border rounded-xl p-6 lg:p-7 shadow-2xs">
+          <h2 className="text-base font-bold text-foreground mb-0.5 flex items-center gap-2">
+            <Building2 className="w-5 h-5 text-muted-foreground" />
             Pilih Poliklinik & Data Pasien
           </h2>
-          <p className="text-xs text-zinc-500 font-medium mb-4">
+          <p className="text-xs text-muted-foreground font-medium mb-4">
             Pilih poliklinik tujuan dan masukkan data pasien untuk mencetak nomor antrean.
           </p>
 
@@ -112,7 +112,7 @@ export default function KioskPage() {
           <form onSubmit={handleRegister} className="space-y-4">
             {/* 1. Pilih Poliklinik */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-foreground/90 mb-2">
                 1. Pilih Layanan Poliklinik Tujuan
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -123,13 +123,13 @@ export default function KioskPage() {
                     onClick={() => setSelectedPoliId(poli.id)}
                     className={`p-3.5 rounded-lg border transition-all cursor-pointer text-left flex flex-col justify-between ${
                       selectedPoliId === poli.id
-                        ? 'bg-green-600 border-green-600 text-white shadow-xs ring-2 ring-green-600/30'
-                        : 'bg-white border-zinc-200 text-zinc-900 hover:border-zinc-300'
+                        ? 'bg-primary border-primary text-primary-foreground shadow-2xs ring-2 ring-primary/20'
+                        : 'bg-card border-border text-foreground hover:border-zinc-300'
                     }`}
                   >
                     <span
                       className={`text-[11px] font-mono font-semibold ${
-                        selectedPoliId === poli.id ? 'text-zinc-300' : 'text-zinc-400'
+                        selectedPoliId === poli.id ? 'text-zinc-300' : 'text-muted-foreground/80'
                       }`}
                     >
                       {poli.kode}
@@ -137,7 +137,7 @@ export default function KioskPage() {
                     <span className="font-bold text-sm mt-0.5">{poli.nama}</span>
                     <span
                       className={`text-[11px] font-medium mt-1 ${
-                        selectedPoliId === poli.id ? 'text-zinc-200' : 'text-zinc-600'
+                        selectedPoliId === poli.id ? 'text-zinc-200' : 'text-muted-foreground'
                       }`}
                     >
                       {poli.gedung_lantai}
@@ -149,7 +149,7 @@ export default function KioskPage() {
 
             {/* 2. Nama Pasien */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-800 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-foreground mb-1.5">
                 2. Nama Lengkap Pasien
               </label>
               <input
@@ -158,13 +158,13 @@ export default function KioskPage() {
                 value={namaPasien}
                 onChange={(e) => setNamaPasien(e.target.value)}
                 placeholder="Contoh: Muhammad Aria Sastra"
-                className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-zinc-200 text-zinc-950 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm font-bold"
+                className="w-full px-3.5 py-2.5 rounded-lg bg-card border border-border text-foreground placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm font-bold"
               />
             </div>
 
             {/* 3. Kategori Pasien */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-zinc-800 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-foreground mb-2">
                 3. Kategori Pasien / Penjamin
               </label>
               <div className="grid grid-cols-3 gap-2.5">
@@ -180,7 +180,7 @@ export default function KioskPage() {
                     className={`py-2.5 px-2 rounded-lg border text-xs font-medium flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
                       jenisPasien === item.id
                         ? 'bg-zinc-900 border-zinc-900 text-white shadow-2xs'
-                        : 'bg-white border-zinc-200 text-zinc-700 hover:border-zinc-300'
+                        : 'bg-card border-border text-foreground/90 hover:border-zinc-300'
                     }`}
                   >
                     <item.icon className="w-3.5 h-3.5" />
@@ -192,7 +192,7 @@ export default function KioskPage() {
 
             {/* 4. Catatan Khusus */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-foreground/90 mb-1.5">
                 4. Catatan Khusus / Keluhan (Opsional)
               </label>
               <input
@@ -200,7 +200,7 @@ export default function KioskPage() {
                 value={catatan}
                 onChange={(e) => setCatatan(e.target.value)}
                 placeholder="Misal: Memerlukan kursi roda / kontrol rutin"
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-900 text-xs font-medium"
+                className="w-full px-3.5 py-2 rounded-lg bg-card border border-border text-foreground placeholder-zinc-400 focus:outline-none focus:border-zinc-900 text-xs font-medium"
               />
             </div>
 
@@ -208,7 +208,7 @@ export default function KioskPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 px-4 rounded-lg bg-green-600 hover:bg-green-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer disabled:opacity-50"
+              className="w-full py-3.5 px-4 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm flex items-center justify-center gap-2 shadow-2xs transition-all cursor-pointer disabled:opacity-50"
             >
               <Printer className="w-4 h-4" />
               <span>{loading ? 'Mencetak Nomor Tiket...' : 'Ambil Nomor Antrean Sekarang'}</span>
@@ -218,42 +218,42 @@ export default function KioskPage() {
 
         {/* Right Section: Printed Ticket Preview (5/12) */}
         <div className="md:col-span-5 flex flex-col gap-4">
-          <div className="bg-white text-zinc-900 rounded-xl p-6 shadow-2xs border border-zinc-200 flex flex-col items-center text-center">
-            <div className="w-12 h-12 rounded-full bg-zinc-100 text-zinc-900 flex items-center justify-center mb-2.5 border border-zinc-200">
-              <Printer className="w-6 h-6 text-zinc-800" />
+          <div className="bg-card text-foreground rounded-xl p-6 shadow-2xs border border-border flex flex-col items-center text-center">
+            <div className="w-12 h-12 rounded-full bg-muted text-foreground flex items-center justify-center mb-2.5 border border-border">
+              <Printer className="w-6 h-6 text-foreground" />
             </div>
 
-            <div className="text-[11px] font-mono font-extrabold tracking-widest uppercase text-zinc-800">
+            <div className="text-[11px] font-mono font-extrabold tracking-widest uppercase text-foreground">
               Husada Medika Integrated Clinic
             </div>
-            <div className="text-xs font-bold text-zinc-500">Struk Antrean Pasien</div>
+            <div className="text-xs font-bold text-muted-foreground">Struk Antrean Pasien</div>
 
             <div className="my-5 w-full border-t border-b border-dashed border-zinc-300 py-5">
-              <div className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest">
+              <div className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
                 NOMOR ANTREAN ANDA
               </div>
-              <div className="text-6xl font-black font-mono text-zinc-950 tracking-tight my-2">
+              <div className="text-6xl font-black font-mono text-foreground tracking-tight my-2">
                 {printedTicket?.nomor_antrean || '---'}
               </div>
-              <div className="text-base font-extrabold text-zinc-950">
+              <div className="text-base font-extrabold text-foreground">
                 {printedTicket?.poliklinik?.nama || 'Silakan Ambil Tiket'}
               </div>
             </div>
 
-            <div className="w-full text-left text-xs space-y-2 text-zinc-700 font-medium">
+            <div className="w-full text-left text-xs space-y-2 text-foreground/90 font-medium">
               <div className="flex justify-between">
-                <span className="text-zinc-400">Nama Pasien:</span>
-                <strong className="text-zinc-900 font-semibold">{printedTicket?.nama_pasien || '-'}</strong>
+                <span className="text-muted-foreground/80">Nama Pasien:</span>
+                <strong className="text-foreground font-semibold">{printedTicket?.nama_pasien || '-'}</strong>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-400">Kategori:</span>
-                <span className="uppercase font-semibold text-zinc-900">
+                <span className="text-muted-foreground/80">Kategori:</span>
+                <span className="uppercase font-semibold text-foreground">
                   {printedTicket?.jenis_pasien || '-'}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-400">Waktu Ambil:</span>
-                <span className="text-zinc-900">
+                <span className="text-muted-foreground/80">Waktu Ambil:</span>
+                <span className="text-foreground">
                   {printedTicket?.waktu_daftar
                     ? new Date(printedTicket.waktu_daftar).toLocaleTimeString('id-ID')
                     : '-'}
@@ -261,7 +261,7 @@ export default function KioskPage() {
               </div>
             </div>
 
-            <div className="mt-5 text-[11px] text-zinc-400 font-medium italic text-center leading-relaxed">
+            <div className="mt-5 text-[11px] text-muted-foreground/80 font-medium italic text-center leading-relaxed">
               Harap menunggu di ruang tunggu poliklinik. Nomor Anda akan dipanggil melalui pengeras suara audio otomatis.
             </div>
           </div>
