@@ -21,3 +21,4 @@ Semua pekerjaan rekayasa pada repositori ini WAJIB mematuhi 9 tahapan alur kerja
 
 ## 2. Aturan Spesifik Proyek
 - Utamakan kode terstruktur, reproduktifitas data, dan efisiensi komputasi.
+- **Autonomous Project Scaffolding:** Ketika diminta membuat sistem/aplikasi baru berbasis domain (misal: toko buku, antrian klinik, kasir/POS), jangan tanyakan kebutuhan dasar (auth, keranjang, warna, font). Langsung terapkan **Rule 16 (Autonomous Domain Archetypes & Scaffolding)**: bangun full-stack dua sisi (Customer Flow + Admin Backoffice), terapkan sistem desain modern (*Smooth Blue & Slate*, font *Inter*), dan sertakan data awal realistis (*seed data*) beserta akun demo siap pakai.
