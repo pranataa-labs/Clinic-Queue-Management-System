@@ -7,14 +7,28 @@
 [![Laravel](https://img.shields.io/badge/Laravel-12.0-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![shadcn/ui](https://img.shields.io/badge/Theme-shadcn_Green-16a34a?style=for-the-badge)](https://ui.shadcn.com/)
+[![shadcn/ui](https://img.shields.io/badge/Theme-shadcn_Smooth_Blue-2563eb?style=for-the-badge)](https://ui.shadcn.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-*Sistem antrean poliklinik rumah sakit terintegrasi dengan pemanggilan suara otomatis (Indonesian TTS), interkom mikrofon langsung via WebRTC, dan antarmuka display TV berdesain modern bertema shadcn Green.*
+*Sistem antrean poliklinik rumah sakit terintegrasi dengan pemanggilan suara otomatis (Indonesian TTS), interkom mikrofon langsung via WebRTC, dan antarmuka display TV berdesain modern bertema shadcn Smooth Blue.*
 
 ---
 
 </div>
+
+## 📸 Tangkapan Layar (Screenshots)
+
+### 1. Layar Display TV Ruang Tunggu (`/`)
+*Tampilan monitor TV ruang tunggu pasien dengan sorotan nomor antrean aktif berukuran besar, status antrean per ruangan, rotasi otomatis seluruh poliklinik, dan teks berjalan (running text).*
+
+![Layar Display TV Ruang Tunggu](docs/screenshots/tv-display.png)
+
+### 2. Konsol Dokter & Tenaga Medis (`/console`)
+*Antarmuka kerja dokter yang terisolasi per ruangan bilik dengan kontrol pemanggilan antrean (Next/Recall), tombol mulai periksa, lewati pasien, interkom siaran mikrofon live ke speaker TV, serta mode jeda istirahat & sholat (Ishoma).*
+
+![Konsol Dokter Husada Medika](docs/screenshots/doctor-console.png)
+
+---
 
 ## 📌 Gambaran Umum Sistem
 
@@ -37,9 +51,9 @@ Sistem memiliki 4 modul utama:
 - **🔒 Isolasi Hak Akses Per Ruangan:**
   - Setiap dokter hanya dapat mengakses, melihat antrean, dan memanggil pasien di ruangannya sendiri.
   - Halaman publik (TV & Kiosk) steril dari tautan konsol dokter dan menu admin.
-- **🎨 UI/UX Bersih Bertema shadcn Green:**
-  - Mengadopsi prinsip desain `leoMirandaa/shadcn-landing-page` (shadcn Green theme, zinc neutrals, hairline borders).
-  - Tipografi tegas dan tebal (*subpixel antialiased ClearType*) yang nyaman dan mudah terbaca dari jarak pandang jauh di ruang tunggu.
+- **🎨 UI/UX Bersih Bertema shadcn Smooth Blue:**
+  - Mengadopsi prinsip desain modern shadcn dengan palet warna *smooth azure/blue* yang tenang, sejuk, dan tidak silau di mata.
+  - Tipografi Google Font Inter yang tegas, berkarakter, dan sangat mudah terbaca (*high legibility*) dari jarak pandang jauh di ruang tunggu.
 - **⚡ Arsitektur Terintegrasi & Performa Tinggi:**
   - Frontend Next.js 16 (Turbopack, App Router) dengan reaktivitas state cepat.
   - Backend Laravel 12 REST API dengan seeder klinik komprehensif dan integritas pengujian otomatis 100%.
@@ -51,7 +65,7 @@ Sistem memiliki 4 modul utama:
 | Komponen | Teknologi | Keterangan |
 | :--- | :--- | :--- |
 | **Frontend** | Next.js 16.4 (React 19, TypeScript) | Server & Client Components dengan Turbopack |
-| **Styling** | Tailwind CSS v4 & Lucide Icons | Desain bertema shadcn Green (`hsl(142.1 76.2% 36.3%)`) |
+| **Styling** | Tailwind CSS v4 & Lucide Icons | Desain bertema shadcn Smooth Blue (`oklch(0.52 0.17 250)`) |
 | **Backend API** | Laravel 12 (PHP 8.2+) | Endpoint RESTful untuk antrean, display state, dan admin CRUD |
 | **Database** | MySQL / SQLite | Didukung migrasi skema relasional dan seeder poliklinik |
 | **Audio Engine** | Web Speech Synthesis & Web Audio API | Sintesis suara fonetik & generator chime sintetis |
