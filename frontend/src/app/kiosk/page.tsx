@@ -8,6 +8,7 @@ import {
   Printer,
   Sparkles,
   ShieldCheck,
+  Coffee,
 } from 'lucide-react';
 import { apiClient } from '@/lib/api-client';
 
@@ -96,9 +97,17 @@ export default function KioskPage() {
             <Building2 className="w-5 h-5 text-zinc-600" />
             Pilih Poliklinik & Data Pasien
           </h2>
-          <p className="text-xs text-zinc-500 font-medium mb-5">
+          <p className="text-xs text-zinc-500 font-medium mb-4">
             Pilih poliklinik tujuan dan masukkan data pasien untuk mencetak nomor antrean.
           </p>
+
+          {/* Jadwal Ishoma Notice */}
+          <div className="mb-4 p-3 rounded-lg bg-amber-50/80 border border-amber-200 flex items-center gap-2.5 text-xs text-amber-900">
+            <Coffee className="w-4 h-4 text-amber-700 shrink-0" />
+            <span>
+              <strong>Jadwal Ishoma (Istirahat & Sholat):</strong> Pukul 12:00 – 13:00 WIB. Tiket antrean yang Anda ambil tetap masuk sistem dan dipanggil saat sesi siang dibuka kembali.
+            </span>
+          </div>
 
           <form onSubmit={handleRegister} className="space-y-4">
             {/* 1. Pilih Poliklinik */}

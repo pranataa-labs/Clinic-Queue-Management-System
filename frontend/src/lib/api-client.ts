@@ -162,6 +162,17 @@ export const apiClient = {
     return json.data;
   },
 
+  async toggleBreak(counterId: number, status: 'active' | 'break') {
+    const res = await fetch(`${API_BASE_URL}/queues/toggle-break`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ counter_id: counterId, status }),
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.message || 'Gagal mengubah status istirahat');
+    return json.data;
+  },
+
   async takeTicket(payload: {
     poliklinik_id: number;
     nama_pasien: string;

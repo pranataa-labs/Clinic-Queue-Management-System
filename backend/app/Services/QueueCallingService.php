@@ -208,11 +208,15 @@ class QueueCallingService
                 ->whereDate('waktu_daftar', now()->toDateString())
                 ->count();
 
+            $activeCounter = $poli->counters->first();
+            $roomStatus = $activeCounter ? $activeCounter->status : 'active';
+
             return [
                 'id' => $poli->id,
                 'kode' => $poli->kode,
                 'nama' => $poli->nama,
                 'gedung_lantai' => $poli->gedung_lantai,
+                'counter_status' => $roomStatus,
                 'current_queue' => $currentCalling ? [
                     'id' => $currentCalling->id,
                     'nomor_antrean' => $currentCalling->nomor_antrean,

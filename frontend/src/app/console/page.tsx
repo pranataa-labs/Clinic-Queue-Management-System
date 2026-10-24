@@ -22,6 +22,7 @@ import {
   ArrowRight,
   ShieldCheck,
   AlertCircle,
+  Coffee,
 } from 'lucide-react';
 import { apiClient, QueueItem, RecentCallItem } from '@/lib/api-client';
 import { audioEngine } from '@/lib/audio-engine';
@@ -46,6 +47,7 @@ function ConsoleContent() {
   const [isBroadcasting, setIsBroadcasting] = useState<boolean>(false);
   const [intercomStatus, setIntercomStatus] = useState<string>('Siap');
   const [micCountdown, setMicCountdown] = useState<number>(30);
+  const [isOnBreak, setIsOnBreak] = useState<boolean>(false);
   const intercomRef = useRef<WebRtcIntercom | null>(null);
   const micTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -63,6 +65,7 @@ function ConsoleContent() {
           const matched = countersData.find((c: any) => c.id === targetId);
           if (matched) {
             setActiveDoctor(matched);
+            setIsOnBreak(matched.status === 'break');
             localStorage.setItem('husada_active_doctor_counter_id', String(matched.id));
           }
         }
@@ -78,6 +81,7 @@ function ConsoleContent() {
   // Handle Doctor Room Selection
   const handleSelectDoctor = (counter: any) => {
     setActiveDoctor(counter);
+    setIsOnBreak(counter.status === 'break');
     localStorage.setItem('husada_active_doctor_counter_id', String(counter.id));
   };
 
@@ -89,6 +93,24 @@ function ConsoleContent() {
       setActiveDoctor(null);
       setCurrentQueue(null);
       setWaitingList([]);
+    }
+  };
+
+  // Toggle Break / Ishoma Mode
+  const handleToggleBreak = async () => {
+    if (!activeDoctor) return;
+    const newStatus = isOnBreak ? 'active' : 'break';
+    setLoadingAction(true);
+    try {
+      if (isBroadcasting) stopIntercom();
+      await apiClient.toggleBreak(activeDoctor.id, newStatus);
+      setIsOnBreak(newStatus === 'break');
+      setActiveDoctor((prev: any) => (prev ? { ...prev, status: newStatus } : null));
+      await loadQueues();
+    } catch (err: any) {
+      alert(err.message || 'Gagal mengubah status istirahat');
+    } finally {
+      setLoadingAction(false);
     }
   };
 
@@ -516,6 +538,20 @@ function ConsoleContent() {
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Jeda Istirahat / Ishoma Toggle */}
+            <button
+              onClick={handleToggleBreak}
+              disabled={loadingAction}
+              className={`px-3 py-1.5 rounded-lg font-semibold text-xs flex items-center gap-1.5 transition-all cursor-pointer border ${
+                isOnBreak
+                  ? 'bg-amber-600 hover:bg-amber-700 text-white border-amber-600 shadow-xs'
+                  : 'bg-white hover:bg-amber-50 text-amber-900 border-amber-300'
+              }`}
+            >
+              <Coffee className="w-3.5 h-3.5" />
+              <span>{isOnBreak ? 'Mode Istirahat Aktif' : 'Jeda Istirahat / Ishoma'}</span>
+            </button>
+
             {/* Interactive Intercom Button */}
             <button
               onClick={toggleIntercom}
@@ -551,6 +587,34 @@ function ConsoleContent() {
 
         {/* Content Area */}
         <main className="p-6 lg:p-8 flex flex-col gap-5">
+          {/* BANNER MODE ISTIRAHAT */}
+          {isOnBreak && (
+            <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 flex flex-col md:flex-row items-center justify-between gap-3 shadow-xs">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-amber-600 text-white flex items-center justify-center font-bold shrink-0 shadow-xs">
+                  <Coffee className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase text-amber-900 tracking-wider">
+                      RUANGAN SEDANG DALAM MODE JEDA / ISTIRAHAT & SHOLAT (ISHOMA)
+                    </span>
+                  </div>
+                  <p className="text-xs text-amber-800 font-medium mt-0.5">
+                    Layar display TV ruang tunggu menampilkan informasi jeda ini. Panggilan antrean dihentikan sementara.
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={handleToggleBreak}
+                className="px-3.5 py-1.5 rounded-lg bg-green-600 hover:bg-green-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-xs cursor-pointer shrink-0 transition-colors"
+              >
+                <span>Lanjutkan Pelayanan Dokter</span>
+              </button>
+            </div>
+          )}
+
           {/* BANNER MIKROFON AKTIF */}
           {isBroadcasting && (
             <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 flex flex-col md:flex-row items-center justify-between gap-3 shadow-xs">
@@ -663,12 +727,18 @@ function ConsoleContent() {
                 <div className="grid grid-cols-2 gap-2 pt-3 border-t border-zinc-100">
                   <button
                     onClick={handleCallNext}
-                    disabled={loadingAction || waitingList.length === 0}
-                    className="col-span-2 py-2.5 px-4 rounded-lg bg-green-600 hover:bg-green-700 disabled:opacity-40 text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
+                    disabled={loadingAction || waitingList.length === 0 || isOnBreak}
+                    className={`col-span-2 py-2.5 px-4 rounded-lg font-semibold text-xs flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer ${
+                      isOnBreak
+                        ? 'bg-zinc-200 text-zinc-500 cursor-not-allowed border border-zinc-300'
+                        : 'bg-green-600 hover:bg-green-700 disabled:opacity-40 text-white'
+                    }`}
                   >
                     <Play className="w-3.5 h-3.5 fill-current" />
                     <span>
-                      {isBroadcasting
+                      {isOnBreak
+                        ? 'Pelayanan Sedang Dijeda (Istirahat / Ishoma)'
+                        : isBroadcasting
                         ? 'Matikan Mic & Panggil Berikutnya'
                         : 'Panggil Antrean Berikutnya (Next)'}
                     </span>

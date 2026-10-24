@@ -190,4 +190,27 @@ class QueueController extends Controller
             'data' => $ticket->load('poliklinik'),
         ], 201);
     }
+
+    /**
+     * Toggle counter break status (Ishoma / Jeda Layanan).
+     */
+    public function toggleBreak(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'counter_id' => 'required|integer|exists:counters,id',
+            'status' => 'required|string|in:active,break',
+        ]);
+
+        $counter = Counter::findOrFail($validated['counter_id']);
+        $counter->status = $validated['status'];
+        $counter->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => $counter->status === 'break'
+                ? 'Ruangan beralih ke mode jeda istirahat/ishoma.'
+                : 'Ruangan kembali aktif melayani.',
+            'data' => $counter,
+        ]);
+    }
 }

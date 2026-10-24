@@ -388,6 +388,48 @@ class QueueApiTest extends TestCase
         ]);
     }
 
+    /**
+     * Test doctor can toggle break / Ishoma mode for their room.
+     */
+    public function test_doctor_can_toggle_break_mode(): void
+    {
+        // Arrange
+        $counter = Counter::firstOrFail();
+
+        // Act: Set to break
+        $response = $this->postJson('/api/queues/toggle-break', [
+            'counter_id' => $counter->id,
+            'status' => 'break',
+        ]);
+
+        // Assert
+        $response->assertStatus(200)
+            ->assertJson([
+                'success' => true,
+                'data' => [
+                    'id' => $counter->id,
+                    'status' => 'break',
+                ],
+            ]);
+
+        $this->assertDatabaseHas('counters', [
+            'id' => $counter->id,
+            'status' => 'break',
+        ]);
+
+        // Act: Resume to active
+        $resumeResponse = $this->postJson('/api/queues/toggle-break', [
+            'counter_id' => $counter->id,
+            'status' => 'active',
+        ]);
+
+        $resumeResponse->assertStatus(200);
+        $this->assertDatabaseHas('counters', [
+            'id' => $counter->id,
+            'status' => 'active',
+        ]);
+    }
+
     // ==========================================
     // 4. ADMIN DASHBOARD & CRUD INTEGRATION TESTS
     // ==========================================

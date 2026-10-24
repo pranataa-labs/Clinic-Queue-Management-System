@@ -19,6 +19,7 @@ Route::prefix('queues')->group(function () {
     Route::post('/skip', [QueueController::class, 'skip']);
     Route::post('/complete', [QueueController::class, 'complete']);
     Route::post('/take-ticket', [QueueController::class, 'takeTicket']);
+    Route::post('/toggle-break', [QueueController::class, 'toggleBreak']);
 });
 
 // Master Data

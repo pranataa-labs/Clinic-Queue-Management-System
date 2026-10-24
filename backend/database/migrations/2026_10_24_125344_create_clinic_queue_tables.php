@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('nomor_bilik', 20)->comment('Bilik 1, Ruang 2, Meja 1');
             $table->string('nama_petugas', 100)->nullable();
             $table->string('gelar_petugas', 100)->nullable()->comment('Spesialisasi atau gelar dokter');
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['active', 'break', 'inactive'])->default('active');
             $table->timestamps();
 
             $table->index(['poliklinik_id', 'status'], 'idx_counters_poli_status');
