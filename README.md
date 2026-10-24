@@ -3,10 +3,12 @@
 # 🏥 Clinic Queue Management System
 ### *Modern Polyclinic Audio Queue Calling & Real-Time TV Display System*
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![Laravel](https://img.shields.io/badge/Laravel-12.0-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.4.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.3.0-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Laravel](https://img.shields.io/badge/Laravel-13.38-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
+[![PHP](https://img.shields.io/badge/PHP-8.3%2B-777BB4?style=for-the-badge&logo=php)](https://www.php.net/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![shadcn/ui](https://img.shields.io/badge/Theme-shadcn_Smooth_Blue-2563eb?style=for-the-badge)](https://ui.shadcn.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
@@ -55,8 +57,8 @@ Sistem memiliki 4 modul utama:
   - Mengadopsi prinsip desain modern shadcn dengan palet warna *smooth azure/blue* yang tenang, sejuk, dan tidak silau di mata.
   - Tipografi Google Font Inter yang tegas, berkarakter, dan sangat mudah terbaca (*high legibility*) dari jarak pandang jauh di ruang tunggu.
 - **⚡ Arsitektur Terintegrasi & Performa Tinggi:**
-  - Frontend Next.js 16 (Turbopack, App Router) dengan reaktivitas state cepat.
-  - Backend Laravel 12 REST API dengan seeder klinik komprehensif dan integritas pengujian otomatis 100%.
+  - Frontend Next.js 16.4.3 (Turbopack, App Router) dengan reaktivitas state cepat.
+  - Backend Laravel 13 REST API dengan seeder klinik komprehensif dan integritas pengujian otomatis 100%.
 
 ---
 
@@ -64,10 +66,10 @@ Sistem memiliki 4 modul utama:
 
 | Komponen | Teknologi | Keterangan |
 | :--- | :--- | :--- |
-| **Frontend** | Next.js 16.4 (React 19, TypeScript) | Server & Client Components dengan Turbopack |
-| **Styling** | Tailwind CSS v4 & Lucide Icons | Desain bertema shadcn Smooth Blue (`oklch(0.52 0.17 250)`) |
-| **Backend API** | Laravel 12 (PHP 8.2+) | Endpoint RESTful untuk antrean, display state, dan admin CRUD |
-| **Database** | MySQL / SQLite | Didukung migrasi skema relasional dan seeder poliklinik |
+| **Frontend** | Next.js 16.4.3 (React 19.3, TypeScript 5.9) | Server & Client Components dengan Turbopack |
+| **Styling** | Tailwind CSS v4.3 & Lucide Icons | Desain bertema shadcn Smooth Blue (`oklch(0.52 0.17 250)`) |
+| **Backend API** | Laravel 13.38 (PHP 8.3+) | Endpoint RESTful untuk antrean, display state, dan admin CRUD |
+| **Database** | MySQL 8.0 / SQLite 3 | Didukung migrasi skema relasional dan seeder poliklinik |
 | **Audio Engine** | Web Speech Synthesis & Web Audio API | Sintesis suara fonetik & generator chime sintetis |
 | **Intercom** | WebRTC DataChannel & MediaStream | Siaran mikrofon live dokter ke speaker TV |
 
@@ -76,9 +78,9 @@ Sistem memiliki 4 modul utama:
 ## 🚀 Panduan Instalasi & Menjalankan Proyek
 
 ### Prasyarat
-- PHP >= 8.2 & Composer
-- Node.js >= 20.x & npm
-- MySQL (atau SQLite)
+- PHP >= 8.3 & Composer
+- Node.js >= 20.x (disarankan v22 / v24) & npm
+- MySQL >= 8.0 (atau SQLite 3)
 
 ### 1. Kloning Repositori
 ```bash
