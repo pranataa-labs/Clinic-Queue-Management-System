@@ -12,126 +12,144 @@
 [![shadcn/ui](https://img.shields.io/badge/Theme-shadcn_Smooth_Blue-2563eb?style=for-the-badge)](https://ui.shadcn.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-*Sistem antrean poliklinik rumah sakit terintegrasi dengan pemanggilan suara otomatis (Indonesian TTS), interkom mikrofon langsung via WebRTC, dan antarmuka display TV berdesain modern bertema shadcn Smooth Blue.*
+<br/>
+
+[![typescript](https://img.shields.io/badge/typescript-%23007acc.svg?style=flat-square&logo=typescript&logoColor=white)](https://github.com/topics/typescript)
+[![nextjs](https://img.shields.io/badge/nextjs-%23000000.svg?style=flat-square&logo=nextdotjs&logoColor=white)](https://github.com/topics/nextjs)
+[![laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=flat-square&logo=laravel&logoColor=white)](https://github.com/topics/laravel)
+[![queue-management](https://img.shields.io/badge/queue--management-2563eb?style=flat-square)](https://github.com/topics/queue-management)
+[![tailwind](https://img.shields.io/badge/tailwind-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white)](https://github.com/topics/tailwind)
+[![hospital-system](https://img.shields.io/badge/hospital--system-0284c7?style=flat-square)](https://github.com/topics/hospital-system)
+[![shadcn-ui](https://img.shields.io/badge/shadcn--ui-0f172a?style=flat-square&logo=shadcnui&logoColor=white)](https://github.com/topics/shadcn-ui)
+[![webrtc](https://img.shields.io/badge/webrtc-333333?style=flat-square&logo=webrtc&logoColor=white)](https://github.com/topics/webrtc)
+[![speech-synthesis](https://img.shields.io/badge/speech--synthesis-10b981?style=flat-square)](https://github.com/topics/speech-synthesis)
+[![healthcare](https://img.shields.io/badge/healthcare-4338ca?style=flat-square)](https://github.com/topics/healthcare)
+
+<br/>
+
+*An integrated clinic and hospital queue management platform featuring automated phonetic voice announcements (Indonesian TTS), live microphone broadcast via WebRTC, and a soothing shadcn Smooth Blue interface.*
 
 ---
 
 </div>
 
-## 📸 Tangkapan Layar (Screenshots)
+## 📸 Screenshots
 
-### 1. Layar Display TV Ruang Tunggu (`/`)
-*Tampilan monitor TV ruang tunggu pasien dengan sorotan nomor antrean aktif berukuran besar, status antrean per ruangan, rotasi otomatis seluruh poliklinik, dan teks berjalan (running text).*
+### 1. Waiting Room Public TV Display (`/`)
+*Real-time public display for clinic waiting areas featuring large active queue ticket typography, 5-room queue status overview, automatic cyclical room rotation, and announcement running text.*
 
-![Layar Display TV Ruang Tunggu](docs/screenshots/tv-display.png)
+![Waiting Room TV Display](docs/screenshots/tv-display.png)
 
-### 2. Konsol Dokter & Tenaga Medis (`/console`)
-*Antarmuka kerja dokter yang terisolasi per ruangan bilik dengan kontrol pemanggilan antrean (Next/Recall), tombol mulai periksa, lewati pasien, interkom siaran mikrofon live ke speaker TV, serta mode jeda istirahat & sholat (Ishoma).*
+### 2. Doctor Examination Console (`/console`)
+*Room-isolated examination workspace for practitioners with queue calling controls (Next / Recall), consultation lifecycle tracking, patient skip, live WebRTC microphone intercom to TV speakers, and Ishoma break toggle.*
 
-![Konsol Dokter Husada Medika](docs/screenshots/doctor-console.png)
-
----
-
-## 📌 Gambaran Umum Sistem
-
-**Clinic Queue Management System** adalah platform otomasi manajemen antrean layanan kesehatan modern yang dirancang untuk faskes, klinik pratama, dan rumah sakit. Sistem ini menggantikan pemanggilan antrean konvensional dengan perpaduan audio sintesis fonetik berkualitas tinggi, siaran mikrofon interkom langsung dokter ke pengeras suara TV, serta pemisahan hak akses kerja (*Role-Based Workspace Isolation*).
-
-Sistem memiliki 4 modul utama:
-1. **Layar Display TV (`/`)**: Layar display publik ruang tunggu dengan sorotan antrean aktif, rotasi 5 bilik/ruangan dokter, dan teks berjalan (*running text*).
-2. **Konsol Dokter (`/console`)**: Konsol pemeriksaan dokter terisolasi per ruangan. Dokter memanggil pasien berikutnya (*Next*), panggil ulang (*Recall*), lewati (*Skip*), dan berbicara langsung via mikrofon interkom WebRTC dengan pengaman *auto-off* 30 detik.
-3. **Kiosk Pendaftaran Mandiri (`/kiosk`)**: Anjungan tiket mandiri pasien untuk memilih poliklinik tujuan dan kategori (Umum, BPJS, Prioritas) dengan cetak struk antrean realtime.
-4. **Dashboard Admin (`/admin`)**: Panel manajemen terpusat untuk mengelola master data ruangan/bilik, master poliklinik, monitoring antrean seluruh poli, dan konfigurasi teks display TV.
+![Doctor Examination Console](docs/screenshots/doctor-console.png)
 
 ---
 
-## ✨ Fitur Utama
+## 📌 System Overview
 
-- **🎙️ Dual Audio Engine (TTS Fonetik + WebRTC Intercom):**
-  - Pemanggilan suara antrean berbahasa Indonesia dengan nada lonceng (*chime*) ganda (Standard Bell & Urgent Dingdong).
-  - Normalisasi fonetik singkatan nama poli (contoh: "Poli Gigi & Mulut", "Poli Spesialis Jantung").
-  - Mikrofon interkom dokter langsung ke speaker TV via WebRTC dengan proteksi *anti-lupa* (otomatis mati dalam 30 detik) dan pencegahan tabrakan audio (*audio collision avoidance*).
-- **🔒 Isolasi Hak Akses Per Ruangan:**
-  - Setiap dokter hanya dapat mengakses, melihat antrean, dan memanggil pasien di ruangannya sendiri.
-  - Halaman publik (TV & Kiosk) steril dari tautan konsol dokter dan menu admin.
-- **🎨 UI/UX Bersih Bertema shadcn Smooth Blue:**
-  - Mengadopsi prinsip desain modern shadcn dengan palet warna *smooth azure/blue* yang tenang, sejuk, dan tidak silau di mata.
-  - Tipografi Google Font Inter yang tegas, berkarakter, dan sangat mudah terbaca (*high legibility*) dari jarak pandang jauh di ruang tunggu.
-- **⚡ Arsitektur Terintegrasi & Performa Tinggi:**
-  - Frontend Next.js 16.4.3 (Turbopack, App Router) dengan reaktivitas state cepat.
-  - Backend Laravel 13 REST API dengan seeder klinik komprehensif dan integritas pengujian otomatis 100%.
+**Clinic Queue Management System** is a modern healthcare queue automation platform engineered for medical facilities, primary care clinics, and specialized hospitals. It modernizes traditional clinic queue operations through high-fidelity phonetic voice synthesis, direct browser-to-TV microphone intercom, and strict Role-Based Workspace Isolation.
+
+The platform provides 4 specialized portals:
+1. **Public TV Display (`/`)**: High-contrast waiting room monitor displaying the actively called patient, multi-room status rotation, and announcement ticker.
+2. **Doctor Console (`/console`)**: Dedicated medical staff console isolated per room. Physicians can call next patients, recall missing visitors, start/complete consultations, and speak directly through TV speakers via WebRTC with a 30-second safety countdown.
+3. **Self-Service Kiosk (`/kiosk`)**: Patient ticketing terminal for autonomous registration across clinics and coverage categories (General, BPJS, and Priority).
+4. **Admin Workspace (`/admin`)**: Centralized management dashboard for doctor rooms, polyclinic master records, live queue tracking, and TV display customization.
 
 ---
 
-## 🏗️ Arsitektur Teknologi
+## ✨ Key Features
 
-| Komponen | Teknologi | Keterangan |
+- **🎙️ Dual Audio Engine (Phonetic TTS + WebRTC Intercom):**
+  - Indonesian voice synthesis with dual synthesized chime presets (Standard Bell & Urgent Dingdong).
+  - Phonetic normalization for medical acronyms and abbreviations (e.g., "Poli Gigi & Mulut", "Poli Spesialis Jantung").
+  - Live doctor microphone streaming to waiting room TV speakers over WebRTC with automatic timeout (30 seconds) and audio collision prevention.
+- **🔒 Room-Level Access Isolation:**
+  - Medical staff are strictly constrained to their designated room and assigned polyclinic queues.
+  - Public portals (TV display and kiosk) are sanitized of administrative and physician control links.
+- **☕ Service Pause & Ishoma (Prayer/Break) Mode:**
+  - One-click break mode for practitioners with animated pause banners on TV displays and kiosk notices informing incoming patients of prayer and rest intervals.
+- **🎨 Soothing shadcn Smooth Blue Design System:**
+  - Clinical azure palette (`oklch(0.52 0.17 250)`) designed for high visual comfort in healthcare environments without harsh glare.
+  - Crisp Google Font Inter typography optimized for long-distance legibility on waiting room displays.
+- **⚡ High-Performance Architecture:**
+  - Fast client/server rendering powered by Next.js 16 (Turbopack, App Router).
+  - Robust Laravel 13 REST API backend backed by 100% automated test coverage.
+
+---
+
+## 🏗️ Technical Architecture
+
+| Component | Technology | Description |
 | :--- | :--- | :--- |
-| **Frontend** | Next.js 16.4.3 (React 19.3, TypeScript 5.9) | Server & Client Components dengan Turbopack |
-| **Styling** | Tailwind CSS v4.3 & Lucide Icons | Desain bertema shadcn Smooth Blue (`oklch(0.52 0.17 250)`) |
-| **Backend API** | Laravel 13.38 (PHP 8.3+) | Endpoint RESTful untuk antrean, display state, dan admin CRUD |
-| **Database** | MySQL 8.0 / SQLite 3 | Didukung migrasi skema relasional dan seeder poliklinik |
-| **Audio Engine** | Web Speech Synthesis & Web Audio API | Sintesis suara fonetik & generator chime sintetis |
-| **Intercom** | WebRTC DataChannel & MediaStream | Siaran mikrofon live dokter ke speaker TV |
+| **Frontend Framework** | [Next.js 16.4.3](https://nextjs.org/) (React 19.3, TypeScript 5.9) | App Router architecture with Turbopack |
+| **Styling & Icons** | [Tailwind CSS v4.3](https://tailwindcss.com/) & Lucide React | Soothing shadcn Smooth Blue design system (`oklch(0.52 0.17 250)`) |
+| **Backend REST API** | [Laravel 13.38](https://laravel.com/) (PHP 8.3+) | Clean service-layer REST endpoints and seeders |
+| **Database** | MySQL 8.0 / SQLite 3 | Relational schema with transactional queue integrity |
+| **Audio Engine** | Web Speech Synthesis & Web Audio API | Client-side phonetic Indonesian TTS & algorithmic chime synthesis |
+| **Live Intercom** | WebRTC DataChannel & MediaStream | Zero-latency browser-to-browser audio broadcast |
+| **Test Suite** | PHPUnit 12.5 | 21 comprehensive feature tests (133 assertions) |
 
 ---
 
-## 🚀 Panduan Instalasi & Menjalankan Proyek
+## 🚀 Installation & Getting Started
 
-### Prasyarat
-- PHP >= 8.3 & Composer
-- Node.js >= 20.x (disarankan v22 / v24) & npm
-- MySQL >= 8.0 (atau SQLite 3)
+### Prerequisites
+- **PHP** >= 8.3 & Composer
+- **Node.js** >= 20.x (Recommended: v22 / v24) & npm
+- **MySQL** >= 8.0 (or SQLite 3)
 
-### 1. Kloning Repositori
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/pranataa-labs/Clinic-Queue-Management-System.git
 cd Clinic-Queue-Management-System
 ```
 
-### 2. Konfigurasi Backend (Laravel)
+### 2. Configure Backend (Laravel 13)
 ```bash
 cd backend
 composer install
 cp .env.example .env
 php artisan key:generate
 
-# Konfigurasi database di file .env sesuai lingkungan Anda, lalu jalankan:
+# Configure your database credentials in .env, then migrate & seed:
 php artisan migrate:fresh --seed
 php artisan serve --port=8000
 ```
-*Backend akan aktif di `http://localhost:8000`.*
+*Backend API will run at `http://localhost:8000`.*
 
-### 3. Konfigurasi Frontend (Next.js)
-Buka terminal baru di direktori root:
+### 3. Configure Frontend (Next.js 16)
+Open a new terminal window in the project root:
 ```bash
 cd frontend
 npm install
 npm run dev -- -p 3000
 ```
-*Frontend akan aktif di `http://localhost:3000`.*
+*Frontend application will run at `http://localhost:3000`.*
 
 ---
 
-## 🖥️ Rute & Navigasi Antarmuka
+## 🖥️ Portal Navigation & Endpoints
 
-| URL | Halaman | Pengguna Sasaran |
+| Endpoint URL | Portal Name | Target Audience / Device |
 | :--- | :--- | :--- |
-| `http://localhost:3000/` | **Layar Display TV** | Ruang Tunggu Pasien (Monitor TV) |
-| `http://localhost:3000/console` | **Konsol Ruangan Dokter** | Dokter & Tenaga Medis Pemeriksa |
-| `http://localhost:3000/kiosk` | **Anjungan Kiosk Pasien** | Pasien / Pengunjung Mandiri |
-| `http://localhost:3000/admin` | **Dashboard Admin** | Petugas Administrasi / IT RS |
+| `http://localhost:3000/` | **Waiting Room TV Display** | Public Waiting Hall (Wall-Mounted Smart TV) |
+| `http://localhost:3000/console` | **Doctor Examination Console** | Physician Desks & Examination Rooms |
+| `http://localhost:3000/kiosk` | **Self-Service Ticketing Kiosk** | Clinic Entrance / Reception Kiosk |
+| `http://localhost:3000/admin` | **Central Admin Dashboard** | Clinic Administrators & IT Operators |
 
 ---
 
-## 🧪 Pengujian Otomatis
+## 🧪 Automated Testing
 
-Jalankan test suite backend untuk memverifikasi integritas API antrean:
+Execute the backend test suite to verify queue dispatching, transaction safety, and edge cases:
 ```bash
 cd backend
 php artisan test
 ```
 
-Verifikasi build produksi frontend Next.js:
+Execute static typing and Next.js production build verification:
 ```bash
 cd frontend
 npm run build
@@ -139,10 +157,10 @@ npm run build
 
 ---
 
-## 📄 Lisensi
+## 📄 License
 
-Proyek ini dilisensikan di bawah lisensi [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
 <div align="center">
-  <sub>Developed with ❤️ by <a href="https://github.com/pranataa-labs">Pranataa Labs</a></sub>
+  <sub>Engineered with dedication by <a href="https://github.com/pranataa-labs">Pranataa Labs</a></sub>
 </div>
