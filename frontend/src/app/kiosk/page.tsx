@@ -68,7 +68,7 @@ export default function KioskPage() {
       {/* Top Header */}
       <header className="px-6 lg:px-8 py-3.5 bg-card border-b border-border shadow-2xs flex items-center justify-between">
         <div className="flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shrink-0 shadow-xs">
             <Ticket className="w-5 h-5" />
           </div>
           <div>
@@ -82,8 +82,8 @@ export default function KioskPage() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-green-700 text-xs font-semibold">
-            <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
             <span>Kiosk Siap Melayani</span>
           </div>
         </div>
@@ -124,12 +124,12 @@ export default function KioskPage() {
                     className={`p-3.5 rounded-lg border transition-all cursor-pointer text-left flex flex-col justify-between ${
                       selectedPoliId === poli.id
                         ? 'bg-primary border-primary text-primary-foreground shadow-2xs ring-2 ring-primary/20'
-                        : 'bg-card border-border text-foreground hover:border-zinc-300'
+                        : 'bg-card border-border text-foreground hover:border-primary/40'
                     }`}
                   >
                     <span
                       className={`text-[11px] font-mono font-semibold ${
-                        selectedPoliId === poli.id ? 'text-zinc-300' : 'text-muted-foreground/80'
+                        selectedPoliId === poli.id ? 'text-primary-foreground/80' : 'text-muted-foreground/80'
                       }`}
                     >
                       {poli.kode}
@@ -137,7 +137,7 @@ export default function KioskPage() {
                     <span className="font-bold text-sm mt-0.5">{poli.nama}</span>
                     <span
                       className={`text-[11px] font-medium mt-1 ${
-                        selectedPoliId === poli.id ? 'text-zinc-200' : 'text-muted-foreground'
+                        selectedPoliId === poli.id ? 'text-primary-foreground/90' : 'text-muted-foreground'
                       }`}
                     >
                       {poli.gedung_lantai}
@@ -158,7 +158,7 @@ export default function KioskPage() {
                 value={namaPasien}
                 onChange={(e) => setNamaPasien(e.target.value)}
                 placeholder="Contoh: Muhammad Aria Sastra"
-                className="w-full px-3.5 py-2.5 rounded-lg bg-card border border-border text-foreground placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm font-bold"
+                className="w-full px-3.5 py-2.5 rounded-lg bg-card border border-border text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm font-bold"
               />
             </div>
 
@@ -179,8 +179,8 @@ export default function KioskPage() {
                     onClick={() => setJenisPasien(item.id as any)}
                     className={`py-2.5 px-2 rounded-lg border text-xs font-medium flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
                       jenisPasien === item.id
-                        ? 'bg-zinc-900 border-zinc-900 text-white shadow-2xs'
-                        : 'bg-card border-border text-foreground/90 hover:border-zinc-300'
+                        ? 'bg-primary border-primary text-primary-foreground shadow-2xs ring-2 ring-primary/20'
+                        : 'bg-card border-border text-foreground/90 hover:border-primary/40'
                     }`}
                   >
                     <item.icon className="w-3.5 h-3.5" />
@@ -200,7 +200,7 @@ export default function KioskPage() {
                 value={catatan}
                 onChange={(e) => setCatatan(e.target.value)}
                 placeholder="Misal: Memerlukan kursi roda / kontrol rutin"
-                className="w-full px-3.5 py-2 rounded-lg bg-card border border-border text-foreground placeholder-zinc-400 focus:outline-none focus:border-zinc-900 text-xs font-medium"
+                className="w-full px-3.5 py-2 rounded-lg bg-card border border-border text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-xs font-medium"
               />
             </div>
 

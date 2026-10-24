@@ -184,10 +184,10 @@ export default function DisplayPage() {
         </div>
       )}
 
-      {/* 1. Header Bar - Crisp White with Hairline Zinc Border */}
+      {/* 1. Header Bar - Crisp White with Hairline Border */}
       <header className="px-6 py-3 bg-card border-b border-border shadow-2xs flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-green-600 flex items-center justify-center text-white shrink-0 shadow-xs">
+          <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-primary-foreground shrink-0 shadow-xs">
             <Building2 className="w-5 h-5" />
           </div>
           <div>
@@ -207,18 +207,18 @@ export default function DisplayPage() {
             onClick={handleUnlockAudio}
             className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
               audioEnabled
-                ? 'bg-green-50 border-green-200 text-green-700 hover:bg-green-100'
-                : 'bg-zinc-900 border-zinc-900 text-white hover:bg-zinc-800 shadow-xs'
+                ? 'bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100'
+                : 'bg-primary border-primary text-primary-foreground hover:bg-primary/90 shadow-xs'
             }`}
           >
             {audioEnabled ? (
               <>
-                <Volume2 className="w-3.5 h-3.5 text-green-600" />
+                <Volume2 className="w-3.5 h-3.5 text-blue-600" />
                 <span>Audio Aktif</span>
               </>
             ) : (
               <>
-                <VolumeX className="w-3.5 h-3.5 text-zinc-300" />
+                <VolumeX className="w-3.5 h-3.5 text-primary-foreground/80" />
                 <span>Aktifkan Audio</span>
               </>
             )}
@@ -308,7 +308,7 @@ export default function DisplayPage() {
               </span>
 
               <div className="flex items-center gap-2 text-foreground/90 font-bold text-sm lg:text-base">
-                <Stethoscope className="w-4 h-4 text-green-600 shrink-0" />
+                <Stethoscope className="w-4 h-4 text-primary shrink-0" />
                 <span>{currentQueue?.nama_petugas || 'Dokter Jaga'}</span>
               </div>
             </div>
@@ -327,7 +327,7 @@ export default function DisplayPage() {
         <section className="col-span-12 lg:col-span-5 flex flex-col h-full min-h-0">
           <div className="flex items-center justify-between pb-2 border-b border-border shrink-0 mb-2.5">
             <h2 className="text-base font-bold text-foreground flex items-center gap-2">
-              <Activity className="w-4 h-4 text-green-600" />
+              <Activity className="w-4 h-4 text-primary" />
               <span>Daftar Antrean Ruangan</span>
             </h2>
             <span className="text-xs font-medium text-muted-foreground bg-muted px-2.5 py-0.5 rounded-md border border-border">
@@ -352,8 +352,8 @@ export default function DisplayPage() {
                   }}
                   className={`px-4 py-2.5 rounded-xl border transition-all flex items-center justify-between shadow-2xs flex-1 min-h-0 overflow-hidden cursor-pointer ${
                     isSelected
-                      ? 'bg-card border-2 border-primary shadow-xs'
-                      : 'bg-card border-border hover:border-zinc-300'
+                      ? 'bg-card border-2 border-primary shadow-xs ring-2 ring-primary/20'
+                      : 'bg-card border-border hover:border-primary/40'
                   }`}
                 >
                   {/* Left Side */}
@@ -412,8 +412,8 @@ export default function DisplayPage() {
       </main>
 
       {/* 3. Bottom Running Text Ticker */}
-      <footer className="h-10 bg-zinc-900 text-zinc-100 flex items-center overflow-hidden px-6 border-t border-zinc-800 shrink-0 z-10">
-        <div className="bg-green-600 text-white px-2.5 py-0.5 rounded text-xs font-bold mr-4 whitespace-nowrap uppercase tracking-wider shrink-0 shadow-xs">
+      <footer className="h-10 bg-slate-900 text-slate-100 flex items-center overflow-hidden px-6 border-t border-slate-800 shrink-0 z-10">
+        <div className="bg-primary text-primary-foreground px-2.5 py-0.5 rounded text-xs font-bold mr-4 whitespace-nowrap uppercase tracking-wider shrink-0 shadow-xs">
           PENGUMUMAN
         </div>
         <div className="flex-1 overflow-hidden relative">

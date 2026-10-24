@@ -325,7 +325,7 @@ function ConsoleContent() {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-6 text-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white shadow-xs animate-pulse">
+          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-xs animate-pulse">
             <Stethoscope className="w-5 h-5" />
           </div>
           <span className="font-semibold text-foreground/90 text-sm">Menyiapkan Konsol Dokter...</span>
@@ -341,7 +341,7 @@ function ConsoleContent() {
         {/* Top Simple Bar */}
         <header className="px-6 lg:px-8 py-3.5 bg-card border-b border-border flex items-center justify-between shadow-2xs">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-zinc-900 flex items-center justify-center text-white shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-primary-foreground shrink-0 shadow-xs">
               <Stethoscope className="w-5 h-5" />
             </div>
             <div>
@@ -438,7 +438,7 @@ function ConsoleContent() {
         <div className="flex flex-col gap-4 overflow-y-auto">
           {/* Logo & Brand Header */}
           <div className="flex items-center gap-3 px-2 py-1">
-            <div className="w-9 h-9 rounded-lg bg-zinc-900 flex items-center justify-center text-white shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-primary-foreground shrink-0 shadow-xs">
               <Stethoscope className="w-5 h-5" />
             </div>
             <div>
@@ -454,8 +454,8 @@ function ConsoleContent() {
           {/* Dedicated Doctor Profile Card (Locked Room) */}
           <div className="border border-border rounded-xl p-3.5 bg-background/70 flex flex-col gap-2">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] px-2 py-0.5 rounded-md font-semibold bg-green-50 text-green-700 border border-green-200 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
+              <span className="text-[10px] px-2 py-0.5 rounded-md font-semibold bg-blue-50 text-blue-700 border border-blue-200 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                 Sedang Bertugas
               </span>
               <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-medium bg-card text-muted-foreground border border-border">
@@ -498,7 +498,7 @@ function ConsoleContent() {
             </div>
             <div className="p-2.5 rounded-lg bg-card border border-border text-center">
               <span className="text-[10px] font-medium text-muted-foreground uppercase block">Selesai</span>
-              <span className="text-lg font-bold text-green-700 font-mono">{recentCompleted.length}</span>
+              <span className="text-lg font-bold text-primary font-mono">{recentCompleted.length}</span>
             </div>
           </div>
 
@@ -828,7 +828,7 @@ function ConsoleContent() {
                         <th className="py-2.5 px-3 text-right">Aksi</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-zinc-100">
+                    <tbody className="divide-y divide-border/60">
                       {waitingList.length === 0 ? (
                         <tr>
                           <td colSpan={5} className="py-6 text-center text-muted-foreground/80 font-medium italic text-xs">
@@ -837,7 +837,7 @@ function ConsoleContent() {
                         </tr>
                       ) : (
                         waitingList.map((q) => (
-                          <tr key={q.id} className="hover:bg-background transition-colors">
+                          <tr key={q.id} className="hover:bg-muted/40 transition-colors">
                             <td className="py-3 px-3 font-mono font-bold text-foreground text-sm">
                               {q.nomor_antrean}
                             </td>
@@ -850,7 +850,7 @@ function ConsoleContent() {
                                   q.jenis_pasien === 'prioritas'
                                     ? 'bg-amber-50 text-amber-800 border-amber-200'
                                     : q.jenis_pasien === 'bpjs'
-                                    ? 'bg-muted text-foreground/90 border-border'
+                                    ? 'bg-blue-50 text-blue-700 border-blue-200'
                                     : 'bg-card text-foreground/90 border-border'
                                 }`}
                               >

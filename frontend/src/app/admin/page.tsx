@@ -252,7 +252,7 @@ function AdminContent() {
         <div className="flex flex-col gap-4 overflow-y-auto">
           {/* Logo & Header */}
           <div className="flex items-center gap-3 px-2 py-1">
-            <div className="w-9 h-9 rounded-lg bg-zinc-900 flex items-center justify-center text-white shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-primary-foreground shrink-0 shadow-xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
@@ -524,7 +524,7 @@ function AdminContent() {
                     </button>
                   </div>
 
-                  <div className="divide-y divide-zinc-100">
+                  <div className="divide-y divide-border/60">
                     {counters.slice(0, 5).map((c) => (
                       <div key={c.id} className="py-2.5 flex items-center justify-between">
                         <div>
@@ -563,7 +563,7 @@ function AdminContent() {
                     </button>
                   </div>
 
-                  <div className="divide-y divide-zinc-100">
+                  <div className="divide-y divide-border/60">
                     {polikliniks.map((p) => (
                       <div key={p.id} className="py-2.5 flex items-center justify-between">
                         <div>
@@ -620,7 +620,7 @@ function AdminContent() {
                       <th className="py-2.5 px-3 text-right">Aksi</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-zinc-100">
+                  <tbody className="divide-y divide-border/60">
                     {counters.length === 0 ? (
                       <tr>
                         <td colSpan={6} className="py-8 text-center text-muted-foreground/80 font-medium italic text-xs">
@@ -653,7 +653,7 @@ function AdminContent() {
                               className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase cursor-pointer transition-colors border ${
                                 c.status === 'active'
                                   ? 'bg-green-50 text-green-700 border-green-200 hover:bg-green-100'
-                                  : 'bg-muted text-muted-foreground border-border hover:bg-zinc-200'
+                                  : 'bg-muted text-muted-foreground border-border hover:bg-muted/80'
                               }`}
                             >
                               {c.status === 'active' ? '● Aktif' : '○ Nonaktif'}
@@ -718,7 +718,7 @@ function AdminContent() {
                       <th className="py-2.5 px-3 text-right">Aksi</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-zinc-100">
+                  <tbody className="divide-y divide-border/60">
                     {polikliniks.map((p) => (
                       <tr key={p.id} className="hover:bg-background transition-colors">
                         <td className="py-3 px-3 font-mono font-bold text-foreground text-sm">
@@ -798,7 +798,7 @@ function AdminContent() {
                       <th className="py-2.5 px-3">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-zinc-100">
+                  <tbody className="divide-y divide-border/60">
                     {queues.length === 0 ? (
                       <tr>
                         <td colSpan={6} className="py-8 text-center text-muted-foreground/80 font-medium italic text-xs">
@@ -880,7 +880,7 @@ function AdminContent() {
                     type="text"
                     value={settings.clinic_name}
                     onChange={(e) => setSettings({ ...settings, clinic_name: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-lg border border-border text-sm font-semibold text-foreground focus:outline-none focus:border-zinc-900"
+                    className="w-full px-3.5 py-2 rounded-lg border border-border text-sm font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                     placeholder="Contoh: Poliklinik Terpadu Husada Medika"
                     required
                   />
@@ -894,7 +894,7 @@ function AdminContent() {
                     rows={4}
                     value={settings.running_text}
                     onChange={(e) => setSettings({ ...settings, running_text: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-lg border border-border text-sm font-medium text-foreground focus:outline-none focus:border-zinc-900 leading-relaxed"
+                    className="w-full px-3.5 py-2 rounded-lg border border-border text-sm font-medium text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 leading-relaxed"
                     placeholder="Tuliskan pesan pengumuman untuk pasien di ruang tunggu..."
                     required
                   />
@@ -910,7 +910,7 @@ function AdminContent() {
                   <select
                     value={settings.audio_chime}
                     onChange={(e) => setSettings({ ...settings, audio_chime: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-lg border border-border text-sm font-semibold text-foreground focus:outline-none focus:border-zinc-900 bg-card cursor-pointer"
+                    className="w-full px-3.5 py-2 rounded-lg border border-border text-sm font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 bg-card cursor-pointer"
                   >
                     <option value="bell">Standard Bell (Ting-Tung Dua Nada Hangat)</option>
                     <option value="dingdong">Urgent Dingdong (Nada Resonansi Tegas)</option>
@@ -956,7 +956,7 @@ function AdminContent() {
                 <select
                   value={counterForm.poliklinik_id}
                   onChange={(e) => setCounterForm({ ...counterForm, poliklinik_id: Number(e.target.value) })}
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   required
                 >
                   {polikliniks.map((p) => (
@@ -974,7 +974,7 @@ function AdminContent() {
                   value={counterForm.nomor_bilik}
                   onChange={(e) => setCounterForm({ ...counterForm, nomor_bilik: e.target.value })}
                   placeholder="Contoh: Ruangan 6 atau Bilik 2"
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   required
                 />
               </div>
@@ -986,7 +986,7 @@ function AdminContent() {
                   value={counterForm.nama_petugas}
                   onChange={(e) => setCounterForm({ ...counterForm, nama_petugas: e.target.value })}
                   placeholder="Contoh: dr. Anisa Putri"
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   required
                 />
               </div>
@@ -998,7 +998,7 @@ function AdminContent() {
                   value={counterForm.gelar_petugas}
                   onChange={(e) => setCounterForm({ ...counterForm, gelar_petugas: e.target.value })}
                   placeholder="Contoh: Spesialis Kulit & Kelamin (Sp.KK)"
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                 />
               </div>
 
@@ -1007,7 +1007,7 @@ function AdminContent() {
                 <select
                   value={counterForm.status}
                   onChange={(e) => setCounterForm({ ...counterForm, status: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                 >
                   <option value="active">Aktif Melayani</option>
                   <option value="inactive">Nonaktif / Tutup</option>
@@ -1060,7 +1060,7 @@ function AdminContent() {
                   value={poliForm.kode}
                   onChange={(e) => setPoliForm({ ...poliForm, kode: e.target.value.toUpperCase() })}
                   placeholder="Contoh: F-THT"
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold font-mono text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold font-mono text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   required
                 />
               </div>
@@ -1072,7 +1072,7 @@ function AdminContent() {
                   value={poliForm.nama}
                   onChange={(e) => setPoliForm({ ...poliForm, nama: e.target.value })}
                   placeholder="Contoh: Poli Spesialis THT"
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   required
                 />
               </div>
@@ -1084,7 +1084,7 @@ function AdminContent() {
                   value={poliForm.nama_fonetik}
                   onChange={(e) => setPoliForm({ ...poliForm, nama_fonetik: e.target.value })}
                   placeholder="Contoh: Poliklinik Telinga Hidung dan Tenggorokan"
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-medium text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-medium text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                 />
               </div>
 
@@ -1095,7 +1095,7 @@ function AdminContent() {
                   value={poliForm.gedung_lantai}
                   onChange={(e) => setPoliForm({ ...poliForm, gedung_lantai: e.target.value })}
                   placeholder="Contoh: Lantai 2 - Sayap Utara"
-                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-zinc-900"
+                  className="w-full px-3 py-2 rounded-lg border border-border text-xs font-semibold text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   required
                 />
               </div>
