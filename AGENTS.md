@@ -30,3 +30,8 @@ Semua pekerjaan rekayasa pada repositori ini WAJIB mematuhi 9 tahapan alur kerja
   - *Permanent Cache-Busting:* Gunakan nama file baru saat memperbarui gambar dokumentasi GitHub agar tidak terjebak cache proxy GitHub Camo.
   - *Feature-First Documentation:* Utamakan kapabilitas teknis dan fitur bisnis; jangan boroskan ruang untuk tabel kode warna.
   - *Unboxed Brand Assets:* Sajikan logo dan lambang brand melayang bebas (*free-floating*) tanpa kotak kartu pembungkus kaku.
+- **Rule 12.1 — Dual-Account Co-Authorship & Pairing:** Pada setiap commit Git di repositori ini, AI WAJIB menyertakan trailer co-author untuk akun kedua pengguna:
+  ```text
+  Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>
+  ```
+  serta membiasakan alur cabang & PR untuk menjaga sinkronisasi kontribusi dan membuka/meningkatkan tier badge GitHub (**Pair Extraordinaire**, **Pull Shark**, dan **YOLO**).
