@@ -23,3 +23,10 @@ Semua pekerjaan rekayasa pada repositori ini WAJIB mematuhi 9 tahapan alur kerja
 - Utamakan kode terstruktur, reproduktifitas data, dan efisiensi komputasi.
 - **Autonomous Project Scaffolding:** Ketika diminta membuat sistem/aplikasi baru berbasis domain (misal: toko buku, antrian klinik, kasir/POS), jangan tanyakan kebutuhan dasar (auth, keranjang, warna, font). Langsung terapkan **Rule 16 (Autonomous Domain Archetypes & Scaffolding)**: bangun full-stack dua sisi (Customer Flow + Admin Backoffice), terapkan sistem desain modern (*Smooth Blue & Slate*, font *Inter*), dan sertakan data awal realistis (*seed data*) beserta akun demo siap pakai.
 - **Machine Learning & Model Engineering:** Ketika membangun model Machine Learning (klasifikasi, regresi, time-series, clustering), WAJIB mematuhi **Rule 17 (Machine Learning & MLOps Engineering Rules)**: terapkan *Simple Baseline First*, kunci random seed global untuk reproduktifitas, cegah *Data Leakage* dengan `Pipeline` terpadu (fit hanya pada train set), lakukan evaluasi berorientasi bisnis (*Slice Analysis* & *Behavioral Tests*), serta lindungi inferensi runtime dengan validasi skema ketat.
+- **AI Operational Discipline & Recurrent Error Prevention:** WAJIB mematuhi **Rule 18 (Agent Operational Discipline & Anti-Patterns)**:
+  - *Contextual Synthesis over Blind Mimicry:* Jangan menyalin teks/topik referensi eksternal secara buta; sesuaikan dengan manifest aktual proyek (`package.json`, dll.).
+  - *Clean Production Handoff:* Bersihkan seluruh bypass demo dan form pre-filled sebelum menyerahkan UI produksi.
+  - *Strict Auth & Session Boundaries:* Kunci aksi tamu vs member (keranjang, checkout) dan sembunyikan elemen UI khusus member bagi tamu.
+  - *Permanent Cache-Busting:* Gunakan nama file baru saat memperbarui gambar dokumentasi GitHub agar tidak terjebak cache proxy GitHub Camo.
+  - *Feature-First Documentation:* Utamakan kapabilitas teknis dan fitur bisnis; jangan boroskan ruang untuk tabel kode warna.
+  - *Unboxed Brand Assets:* Sajikan logo dan lambang brand melayang bebas (*free-floating*) tanpa kotak kartu pembungkus kaku.
