@@ -3,6 +3,8 @@
 # 🏥 Clinic Queue Management System
 ### *Modern Polyclinic Audio Queue Calling & Real-Time TV Display System*
 
+[`laravel`](https://github.com/topics/laravel) • [`nextjs`](https://github.com/topics/nextjs) • [`typescript`](https://github.com/topics/typescript) • [`queue-management`](https://github.com/topics/queue-management) • [`healthcare`](https://github.com/topics/healthcare) • [`webspeech`](https://github.com/topics/webspeech) • [`webrtc`](https://github.com/topics/webrtc) • [`tailwind`](https://github.com/topics/tailwind) • [`shadcn-ui`](https://github.com/topics/shadcn-ui)
+
 [![Next.js](https://img.shields.io/badge/Next.js-16.4.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.3.0-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Laravel](https://img.shields.io/badge/Laravel-13.38-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
